@@ -592,7 +592,7 @@ function buildExtraObjectPropertiesSerializer (context, location, addComma, objV
   return code
 }
 
-function buildInnerObject (context, location, objVar) {
+function buildInnerObject (context, location, objVar, isReturnForm) {
   const schema = location.schema
 
   const propertiesLocation = location.getPropertyLocation('properties')
@@ -616,17 +616,16 @@ function buildInnerObject (context, location, objVar) {
     }
   }
 
-  code += 'json += JSON_STR_BEGIN_OBJECT\n'
-
   const localUid = context.uid++
   let addComma = ''
+  let emptyObjectGuard = null
 
   // propertiesKeys is sorted required-first; the guard checks [0] is required because
   // otherwise additionalProperties/patternProperties would emit a stray `{ ,"k":v }`.
   if (propertiesKeys.length > 0 && requiredProperties.includes(propertiesKeys[0])) {
-    // The first property is required, so we don't need a comma.
-    // For the subsequent properties, we can blindly add a comma.
-
+    // The first property is required, so it always emits (or throws): fold the
+    // object-open brace into its key prefix. Subsequent properties fold the
+    // comma into their key prefix the same way, cutting one append per property.
     for (let i = 0; i < propertiesKeys.length; i++) {
       const key = propertiesKeys[i]
       const propertyLocation = propertiesLocation.getPropertyLocation(key)
@@ -640,23 +639,18 @@ function buildInnerObject (context, location, objVar) {
       const value = `value_${key.replace(/[^a-zA-Z0-9]/g, '_')}_${context.uid++}`
       const defaultValue = resolvedLocation.schema.default
       const isRequired = requiredProperties.includes(key)
-
-      // i === 0 means it's the first property, and it IS required (due to sort). No comma.
-      // i > 0 means it follows a required property (or a sequence starting with one). Unconditional comma.
-      const currentAddComma = i === 0 ? '' : 'json += JSON_STR_COMMA'
+      const keyPrefix = (i === 0 ? '{' : ',') + sanitizedKey + ':'
 
       code += `
       const ${value} = ${objVar}[${sanitizedKey}]
       if (${value} !== undefined) {
-        ${currentAddComma}
-        json += ${JSON.stringify(sanitizedKey + ':')}
+        json += ${JSON.stringify(keyPrefix)}
         ${buildValue(context, resolvedLocation, `${value}`)}
       }`
 
       if (defaultValue !== undefined) {
         code += ` else {
-        ${currentAddComma}
-        json += ${JSON.stringify(sanitizedKey + ':' + JSON.stringify(defaultValue))}
+        json += ${JSON.stringify(keyPrefix + JSON.stringify(defaultValue))}
       }
       `
       } else if (isRequired) {
@@ -671,11 +665,16 @@ function buildInnerObject (context, location, objVar) {
 
     addComma = 'json += JSON_STR_COMMA'
   } else {
+    // No property is guaranteed to emit: fold `{` into whichever property
+    // emits first, and only emit a bare `{` when none does.
     const needsRuntimeComma = propertiesKeys.length > 1 || schema.patternProperties || (schema.additionalProperties !== undefined && schema.additionalProperties !== false)
 
     if (needsRuntimeComma) {
       code += `let addComma_${localUid} = false\n`
-      addComma = `!addComma_${localUid} && (addComma_${localUid} = true) || (json += JSON_STR_COMMA)`
+      addComma = `json += addComma_${localUid} ? JSON_STR_COMMA : ((addComma_${localUid} = true), JSON_STR_BEGIN_OBJECT)`
+      emptyObjectGuard = `if (!addComma_${localUid}) json += JSON_STR_BEGIN_OBJECT\n`
+    } else if (propertiesKeys.length === 0) {
+      code += 'json += JSON_STR_BEGIN_OBJECT\n'
     }
 
     for (const key of propertiesKeys) {
@@ -688,12 +687,10 @@ function buildInnerObject (context, location, objVar) {
       const value = `value_${key.replace(/[^a-zA-Z0-9]/g, '_')}_${context.uid++}`
       const defaultValue = propertyLocation.schema.default
       const isRequired = requiredProperties.includes(key) // Should be false here but good to keep
-      // Select a complete prefix so the comma does not need a separate concatenation.
-      const propertyPrefix = sanitizedKey + ':'
+      const keyColon = sanitizedKey + ':'
       const addProperty = needsRuntimeComma
-        ? `json += addComma_${localUid} ? ${JSON.stringify(',' + propertyPrefix)} : ${JSON.stringify(propertyPrefix)}
-           addComma_${localUid} = true`
-        : `json += ${JSON.stringify(propertyPrefix)}`
+        ? `json += addComma_${localUid} ? ${JSON.stringify(',' + keyColon)} : ((addComma_${localUid} = true), ${JSON.stringify('{' + keyColon)})`
+        : `json += ${JSON.stringify('{' + keyColon)}`
 
       code += `
           const ${value} = ${objVar}[${sanitizedKey}]
@@ -703,15 +700,32 @@ function buildInnerObject (context, location, objVar) {
           }`
 
       if (defaultValue !== undefined) {
-        code += ` else {
+        const defaultValueLiteral = JSON.stringify(sanitizedKey + ':' + JSON.stringify(defaultValue))
+        if (needsRuntimeComma) {
+          code += ` else {
             ${addComma}
-            json += ${JSON.stringify(sanitizedKey + ':' + JSON.stringify(defaultValue))}
+            json += ${defaultValueLiteral}
           }
           `
+        } else {
+          // Single optional property with default: `{` is folded into the
+          // default literal so the absent branch still opens the object.
+          code += ` else {
+            json += ${JSON.stringify('{' + sanitizedKey + ':' + JSON.stringify(defaultValue))}
+          }
+          `
+        }
       } else if (isRequired) {
         // Should not happen if requiredProperties.length === 0 but safety
         code += ` else {
             throw new Error('${sanitizedKey.replace(/'/g, '\\\'')} is required!')
+          }
+          `
+      } else if (!needsRuntimeComma) {
+        // Single optional property: `{` is folded into its key, so emit `{`
+        // when the property is absent.
+        code += ` else {
+            json += JSON_STR_BEGIN_OBJECT
           }
           `
       } else {
@@ -724,9 +738,15 @@ function buildInnerObject (context, location, objVar) {
     code += buildExtraObjectPropertiesSerializer(context, location, addComma, objVar)
   }
 
-  code += `
-    json += JSON_STR_END_OBJECT
-  `
+  if (emptyObjectGuard !== null) {
+    code += emptyObjectGuard
+  }
+
+  // Named object serializers can return `json + '}'` directly, saving one
+  // append + intermediate assignment in the hot per-item path.
+  code += isReturnForm
+    ? '\nreturn json + JSON_STR_END_OBJECT\n'
+    : '\njson += JSON_STR_END_OBJECT\n'
   return code
 }
 
@@ -820,8 +840,7 @@ function buildObject (context, location, input) {
         if (obj === null) return ${nullable ? 'JSON_STR_NULL' : 'JSON_STR_EMPTY_OBJECT'}
         let json = ''
 
-        ${buildInnerObject(context, location, 'obj')}
-        return json
+        ${buildInnerObject(context, location, 'obj', true)}
       }
     `
 
