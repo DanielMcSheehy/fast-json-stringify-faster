@@ -44,7 +44,8 @@ const {
   asDateTime,
   asDate,
   asTime,
-  asUnsafeString
+  asUnsafeString,
+  asPlainStringArray
 } = serializer
 
 const asInteger = serializer.asInteger.bind(serializer)
@@ -888,6 +889,7 @@ function buildObject (context, location, input) {
   return code
 }
 
+
 // Per-element condition under which a native JSON.stringify(array) is
 // byte-identical to the generated per-item serializer for primitive item
 // schemas (see EXPERIMENTS/primitive-array-fastpath.md). Returns null when
@@ -922,6 +924,38 @@ function getPrimitiveArrayFastPathCondition (itemsSchema) {
   }
 }
 
+
+// Item schema { type: 'string' } with no format, nullable, const, or combinator.
+// Other keywords (enum, pattern, minLength) are not applied while serializing.
+function isPlainStringItemsSchema (schema) {
+  if (schema.type !== 'string') {
+    return false
+  }
+  if (schema.format !== undefined) {
+    return false
+  }
+  if (schema.nullable === true) {
+    return false
+  }
+  if (schema.const !== undefined) {
+    return false
+  }
+  if (schema.allOf !== undefined) {
+    return false
+  }
+  if (schema.anyOf !== undefined) {
+    return false
+  }
+  if (schema.oneOf !== undefined) {
+    return false
+  }
+  if (schema.if !== undefined) {
+    return false
+  }
+  return true
+
+}
+
 function buildArray (context, location, input) {
   const schema = location.schema
 
@@ -933,6 +967,9 @@ function buildArray (context, location, input) {
   }
 
   const itemsSchema = itemsLocation.schema
+  const plainStringFastPath = context.largeArrayMechanism !== 'json-stringify' &&
+    !Array.isArray(itemsSchema) &&
+    isPlainStringItemsSchema(itemsSchema)
 
   if (context.functionsNamesBySchema.has(schema)) {
     const funcName = context.functionsNamesBySchema.get(schema)
@@ -975,6 +1012,17 @@ function buildArray (context, location, input) {
 
     if (context.largeArrayMechanism === 'json-stringify') {
       functionCode += `if (arrayLength >= ${context.largeArraySize}) return JSON.stringify(obj)\n`
+
+    } else if (plainStringFastPath) {
+      // Copy-then-JSON.stringify. Equivalent to per-element asString when every
+      // element is a string; a miss falls through to the coercing loop.
+      functionCode += `
+      if (arrayLength >= ${context.largeArraySize}) {
+        const fjsPlain = asPlainStringArray(obj)
+        if (fjsPlain !== undefined) return fjsPlain
+      }
+      `
+
     } else {
       const fastPathCondition = getPrimitiveArrayFastPathCondition(itemsSchema)
       if (fastPathCondition) {
@@ -993,6 +1041,7 @@ function buildArray (context, location, input) {
         }
       `
       }
+
     }
 
     functionCode += `
@@ -1078,6 +1127,13 @@ function buildArray (context, location, input) {
 
   if (context.largeArrayMechanism === 'json-stringify') {
     inlinedCode += `if (arrayLength_${objVar} >= ${context.largeArraySize}) json += JSON.stringify(${objVar})\n else {`
+  } else if (plainStringFastPath) {
+    inlinedCode += `
+      let fjsPlain_${objVar}
+      if (arrayLength_${objVar} >= ${context.largeArraySize}) fjsPlain_${objVar} = asPlainStringArray(${objVar})
+      if (fjsPlain_${objVar} !== undefined) json += fjsPlain_${objVar}
+      else {
+    `
   }
 
   inlinedCode += `
@@ -1134,7 +1190,7 @@ function buildArray (context, location, input) {
     json += JSON_STR_END_ARRAY
   `
 
-  if (context.largeArrayMechanism === 'json-stringify') {
+  if (context.largeArrayMechanism === 'json-stringify' || plainStringFastPath) {
     inlinedCode += '}'
   }
 
