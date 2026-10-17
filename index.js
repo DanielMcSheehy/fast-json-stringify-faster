@@ -843,6 +843,40 @@ function buildObject (context, location, input) {
   return code
 }
 
+// Per-element condition under which a native JSON.stringify(array) is
+// byte-identical to the generated per-item serializer for primitive item
+// schemas (see EXPERIMENTS/primitive-array-fastpath.md). Returns null when
+// the item schema uses any keyword that changes serialization dispatch.
+function getPrimitiveArrayFastPathCondition (itemsSchema) {
+  if (
+    Array.isArray(itemsSchema) ||
+    itemsSchema.$ref !== undefined ||
+    typeof itemsSchema.type !== 'string' ||
+    itemsSchema.const !== undefined ||
+    itemsSchema.nullable === true ||
+    itemsSchema.allOf !== undefined ||
+    itemsSchema.anyOf !== undefined ||
+    itemsSchema.oneOf !== undefined ||
+    itemsSchema.if !== undefined
+  ) {
+    return null
+  }
+  switch (itemsSchema.type) {
+    case 'number':
+      // asNumber(): NaN throws, Infinity serializes as null, every other
+      // number renders via ToString, exactly like JSON.stringify.
+      return 'typeof v === \'number\' && v === v'
+    case 'integer':
+      // asInteger(): only integer numbers skip the (rounding-dependent)
+      // parseInteger path; those render via ToString like JSON.stringify.
+      return 'Number.isInteger(v)'
+    case 'boolean':
+      return 'typeof v === \'boolean\''
+    default:
+      return null
+  }
+}
+
 function buildArray (context, location, input) {
   const schema = location.schema
 
@@ -896,6 +930,24 @@ function buildArray (context, location, input) {
 
     if (context.largeArrayMechanism === 'json-stringify') {
       functionCode += `if (arrayLength >= ${context.largeArraySize}) return JSON.stringify(obj)\n`
+    } else {
+      const fastPathCondition = getPrimitiveArrayFastPathCondition(itemsSchema)
+      if (fastPathCondition) {
+        const flagVar = `fastNative_${context.uid++}`
+        functionCode += `
+        let ${flagVar} = true
+        for (let i = 0; i < arrayLength; i++) {
+          const v = obj[i]
+          if (!(${fastPathCondition})) {
+            ${flagVar} = false
+            break
+          }
+        }
+        if (${flagVar}) {
+          return json + JSON.stringify(obj)
+        }
+      `
+      }
     }
 
     functionCode += `
