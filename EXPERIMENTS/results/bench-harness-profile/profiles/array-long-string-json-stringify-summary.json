@@ -1,0 +1,41 @@
+{
+  "kind": "long-string",
+  "mechanism": "json-stringify",
+  "duration": "2000",
+  "startUs": 951789254687,
+  "endUs": 951791383362,
+  "iterations": 18,
+  "outputType": "number",
+  "sampledUs": 2128959,
+  "samples": 516,
+  "functions": [
+    {
+      "name": "anonymous0",
+      "file": "(generated code / eval)",
+      "line": 31,
+      "selfUs": 1858961,
+      "percent": 87.31783937595792
+    },
+    {
+      "name": "(anonymous)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 222584,
+      "percent": 10.45506277950867
+    },
+    {
+      "name": "(garbage collector)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 43873,
+      "percent": 2.060772424457211
+    },
+    {
+      "name": "runFor",
+      "file": "benchmark/profile-workload.js",
+      "line": 25,
+      "selfUs": 3541,
+      "percent": 0.16632542007619686
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "kind": "nested-object",
+  "mechanism": "json-stringify",
+  "duration": "2000",
+  "startUs": 951804119203,
+  "endUs": 951806252899,
+  "iterations": 10,
+  "outputType": "number",
+  "sampledUs": 2134916,
+  "samples": 588,
+  "functions": [
+    {
+      "name": "anonymous0",
+      "file": "(generated code / eval)",
+      "line": 141,
+      "selfUs": 2025376,
+      "percent": 94.86911897236237
+    },
+    {
+      "name": "(anonymous)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 98666,
+      "percent": 4.621540144904999
+    },
+    {
+      "name": "(garbage collector)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 10874,
+      "percent": 0.5093408827326227
+    }
+  ]
+}

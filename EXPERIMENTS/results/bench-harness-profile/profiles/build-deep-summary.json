@@ -1,0 +1,476 @@
+{
+  "case": "deep",
+  "kind": "integer",
+  "mechanism": "default",
+  "duration": "2000",
+  "startUs": 951822614127,
+  "endUs": 951824617285,
+  "iterations": 890,
+  "outputType": "function",
+  "sampledUs": 2003083,
+  "samples": 528,
+  "functions": [
+    {
+      "name": "(garbage collector)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 218376,
+      "percent": 10.90199457536208
+    },
+    {
+      "name": "build",
+      "file": "index.js",
+      "line": 323,
+      "selfUs": 191248,
+      "percent": 9.547682247814993
+    },
+    {
+      "name": "traverse",
+      "file": "index.js",
+      "line": 1231,
+      "selfUs": 175124,
+      "percent": 8.742723092353136
+    },
+    {
+      "name": "addVocabulary",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 327,
+      "selfUs": 162543,
+      "percent": 8.114641280466161
+    },
+    {
+      "name": "(anonymous)",
+      "file": "node_modules/ajv/dist/compile/resolve.js",
+      "line": 103,
+      "selfUs": 147291,
+      "percent": 7.353215019048137
+    },
+    {
+      "name": "buildObject",
+      "file": "index.js",
+      "line": 796,
+      "selfUs": 141832,
+      "percent": 7.080685123881536
+    },
+    {
+      "name": "addRule",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 565,
+      "selfUs": 121420,
+      "percent": 6.061655957341758
+    },
+    {
+      "name": "addKeyword",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 332,
+      "selfUs": 68997,
+      "percent": 3.4445402412181623
+    },
+    {
+      "name": "Validator",
+      "file": "lib/validator.js",
+      "line": 10,
+      "selfUs": 62039,
+      "percent": 3.097175703652819
+    },
+    {
+      "name": "getSafeSchemaRef",
+      "file": "index.js",
+      "line": 270,
+      "selfUs": 61624,
+      "percent": 3.0764576405470967
+    },
+    {
+      "name": "_traverse",
+      "file": "node_modules/json-schema-traverse/index.js",
+      "line": 67,
+      "selfUs": 57499,
+      "percent": 2.8705250855805775
+    },
+    {
+      "name": "assertObjectDepth",
+      "file": "index.js",
+      "line": 81,
+      "selfUs": 45669,
+      "percent": 2.279935479458415
+    },
+    {
+      "name": "(anonymous)",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 364,
+      "selfUs": 42624,
+      "percent": 2.1279198116104023
+    },
+    {
+      "name": "#insertSchemaBySchemaId",
+      "file": "node_modules/json-schema-ref-resolver/index.js",
+      "line": 241,
+      "selfUs": 42376,
+      "percent": 2.1155388967905973
+    },
+    {
+      "name": "getSchemaRefs",
+      "file": "node_modules/ajv/dist/compile/resolve.js",
+      "line": 94,
+      "selfUs": 38375,
+      "percent": 1.9157967992339808
+    },
+    {
+      "name": "Ajv",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 94,
+      "selfUs": 34625,
+      "percent": 1.7285853856280544
+    },
+    {
+      "name": "validate10",
+      "file": "lib/schema-validator.js",
+      "line": 73,
+      "selfUs": 33040,
+      "percent": 1.6494573614772827
+    },
+    {
+      "name": "buildInnerObject",
+      "file": "index.js",
+      "line": 595,
+      "selfUs": 27043,
+      "percent": 1.350068868838685
+    },
+    {
+      "name": "addBeforeRule",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 594,
+      "selfUs": 26334,
+      "percent": 1.314673430906258
+    },
+    {
+      "name": "formatsPlugin",
+      "file": "node_modules/ajv-formats/dist/index.js",
+      "line": 8,
+      "selfUs": 20542,
+      "percent": 1.0255191622114512
+    },
+    {
+      "name": "serializePathEncoding",
+      "file": "node_modules/fast-uri/lib/utils.js",
+      "line": 522,
+      "selfUs": 18751,
+      "percent": 0.9361069910732606
+    },
+    {
+      "name": "asComment",
+      "file": "index.js",
+      "line": 266,
+      "selfUs": 18417,
+      "percent": 0.9194326945014261
+    },
+    {
+      "name": "assertSchemaDepth",
+      "file": "index.js",
+      "line": 115,
+      "selfUs": 15459,
+      "percent": 0.7717603314490713
+    },
+    {
+      "name": "escapeJsonPtr",
+      "file": "node_modules/json-schema-traverse/index.js",
+      "line": 91,
+      "selfUs": 14792,
+      "percent": 0.7384616613490305
+    },
+    {
+      "name": "RefResolver",
+      "file": "node_modules/json-schema-ref-resolver/index.js",
+      "line": 14,
+      "selfUs": 14292,
+      "percent": 0.713500139534907
+    },
+    {
+      "name": "canonicalizeHost",
+      "file": "node_modules/fast-uri/index.js",
+      "line": 382,
+      "selfUs": 13042,
+      "percent": 0.6510963349995981
+    },
+    {
+      "name": "compileFixture",
+      "file": "benchmark/profile-workload.js",
+      "line": 16,
+      "selfUs": 12875,
+      "percent": 0.6427591867136808
+    },
+    {
+      "name": "getPropertyLocation",
+      "file": "lib/location.js",
+      "line": 10,
+      "selfUs": 11916,
+      "percent": 0.5948829878741919
+    },
+    {
+      "name": "addFormats",
+      "file": "node_modules/ajv-formats/dist/index.js",
+      "line": 27,
+      "selfUs": 10959,
+      "percent": 0.5471066351219596
+    },
+    {
+      "name": "RegExp: ^[a-z_$][a-z0-9_$:-]*$",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 10834,
+      "percent": 0.5408662546684286
+    },
+    {
+      "name": "recomposeAuthority",
+      "file": "node_modules/fast-uri/lib/utils.js",
+      "line": 778,
+      "selfUs": 10499,
+      "percent": 0.5241420350529659
+    },
+    {
+      "name": "hrtimeBigInt",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 10334,
+      "percent": 0.5159047328543052
+    },
+    {
+      "name": "checkOptions",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 493,
+      "selfUs": 9583,
+      "percent": 0.4784125270894915
+    },
+    {
+      "name": "parseWithStatus",
+      "file": "node_modules/fast-uri/index.js",
+      "line": 414,
+      "selfUs": 9416,
+      "percent": 0.4700753788035743
+    },
+    {
+      "name": "addMetaSchema",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 240,
+      "selfUs": 8458,
+      "percent": 0.4222491030077136
+    },
+    {
+      "name": "serialize",
+      "file": "node_modules/fast-uri/index.js",
+      "line": 194,
+      "selfUs": 8418,
+      "percent": 0.42025218126258373
+    },
+    {
+      "name": "buildSingleTypeSerializer",
+      "file": "index.js",
+      "line": 1177,
+      "selfUs": 8041,
+      "percent": 0.4014311938147346
+    },
+    {
+      "name": "hasSchema",
+      "file": "node_modules/json-schema-ref-resolver/index.js",
+      "line": 72,
+      "selfUs": 7501,
+      "percent": 0.37447275025548116
+    },
+    {
+      "name": "RegExp: ^[A-Za-z0-9\\-._~!$&'()*+,;=:@/]$",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 7375,
+      "percent": 0.36818244675832207
+    },
+    {
+      "name": "(anonymous)",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 365,
+      "selfUs": 7167,
+      "percent": 0.35779845368364666
+    },
+    {
+      "name": "parse",
+      "file": "node_modules/fast-uri/index.js",
+      "line": 607,
+      "selfUs": 6876,
+      "percent": 0.34327084798782675
+    },
+    {
+      "name": "measureWorkload",
+      "file": "benchmark/profile-workload.js",
+      "line": 39,
+      "selfUs": 6792,
+      "percent": 0.339077312323054
+    },
+    {
+      "name": "(program)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 6416,
+      "percent": 0.32030624791883316
+    },
+    {
+      "name": "eachItem",
+      "file": "node_modules/ajv/dist/compile/util.js",
+      "line": 82,
+      "selfUs": 4458,
+      "percent": 0.2225569284947254
+    },
+    {
+      "name": "RegExp: ^(?:([^#/:?]+):)?(?:\\/\\/((?:([^#/?@]*)@)?(\\[[^#/?\\]]+\\]|[^#/:?]*)(?::(\\d*))?))?([^#?]*)(?:\\?([^#]*))?(?:#((?:.|[\\n\\r])*))?",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 3625,
+      "percent": 0.18097103315239557
+    },
+    {
+      "name": "(anonymous)",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 553,
+      "selfUs": 2458,
+      "percent": 0.12271084123823127
+    },
+    {
+      "name": "module.exports",
+      "file": "node_modules/json-schema-traverse/index.js",
+      "line": 3,
+      "selfUs": 2417,
+      "percent": 0.12066399644947312
+    },
+    {
+      "name": "isJSONType",
+      "file": "node_modules/ajv/dist/compile/rules.js",
+      "line": 6,
+      "selfUs": 2250,
+      "percent": 0.11232684816355588
+    },
+    {
+      "name": "SchemaEnv",
+      "file": "node_modules/ajv/dist/compile/index.js",
+      "line": 11,
+      "selfUs": 2042,
+      "percent": 0.10194285508888049
+    },
+    {
+      "name": "RegExp: #\\/?$",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 2000,
+      "percent": 0.09984608725649412
+    },
+    {
+      "name": "runFor",
+      "file": "benchmark/profile-workload.js",
+      "line": 25,
+      "selfUs": 1875,
+      "percent": 0.09360570680296323
+    },
+    {
+      "name": "removeDotSegments",
+      "file": "node_modules/fast-uri/lib/utils.js",
+      "line": 268,
+      "selfUs": 1875,
+      "percent": 0.09360570680296323
+    },
+    {
+      "name": "addSchema",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 215,
+      "selfUs": 1791,
+      "percent": 0.08941217113819047
+    },
+    {
+      "name": "_addSchema",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 435,
+      "selfUs": 1334,
+      "percent": 0.06659734020008157
+    },
+    {
+      "name": "normalizeId",
+      "file": "node_modules/ajv/dist/compile/resolve.js",
+      "line": 84,
+      "selfUs": 1333,
+      "percent": 0.06654741715645333
+    },
+    {
+      "name": "normalizeIPv6",
+      "file": "node_modules/fast-uri/lib/utils.js",
+      "line": 215,
+      "selfUs": 1292,
+      "percent": 0.0645005723676952
+    },
+    {
+      "name": "hrtimeBigInt",
+      "file": "node:internal/process/per_thread",
+      "line": 99,
+      "selfUs": 1208,
+      "percent": 0.060307036702922444
+    },
+    {
+      "name": "addSchema",
+      "file": "node_modules/json-schema-ref-resolver/index.js",
+      "line": 22,
+      "selfUs": 1167,
+      "percent": 0.058260191914164317
+    },
+    {
+      "name": "_getFullPath",
+      "file": "node_modules/ajv/dist/compile/resolve.js",
+      "line": 78,
+      "selfUs": 1125,
+      "percent": 0.05616342408177794
+    },
+    {
+      "name": "_addDefaultMetaSchema",
+      "file": "node_modules/ajv/dist/ajv.js",
+      "line": 17,
+      "selfUs": 1125,
+      "percent": 0.05616342408177794
+    },
+    {
+      "name": "RegExp: [^!\"$&'()*+,\\-.;=_`a-z{}~]",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 875,
+      "percent": 0.043682663174716176
+    },
+    {
+      "name": "getMetaSchemaOptions",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 534,
+      "selfUs": 792,
+      "percent": 0.039539050553571674
+    },
+    {
+      "name": "(anonymous)",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 571,
+      "selfUs": 416,
+      "percent": 0.020767986149350774
+    },
+    {
+      "name": "(anonymous)",
+      "file": "(generated code / eval)",
+      "line": 1,
+      "selfUs": 375,
+      "percent": 0.018721141360592646
+    },
+    {
+      "name": "keywordMetaschema",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 604,
+      "selfUs": 333,
+      "percent": 0.016624373528206268
+    },
+    {
+      "name": "ValueScope",
+      "file": "node_modules/ajv/dist/compile/codegen/scope.js",
+      "line": 59,
+      "selfUs": 83,
+      "percent": 0.004143612621144506
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "kind": "short-string",
+  "mechanism": "default",
+  "duration": "2000",
+  "startUs": 951779882347,
+  "endUs": 951781907871,
+  "iterations": 80,
+  "outputType": "number",
+  "sampledUs": 2025333,
+  "samples": 687,
+  "functions": [
+    {
+      "name": "anonymous0",
+      "file": "(generated code / eval)",
+      "line": 31,
+      "selfUs": 994123,
+      "percent": 49.08442216662643
+    },
+    {
+      "name": "serializeFixture",
+      "file": "benchmark/profile-workload.js",
+      "line": 22,
+      "selfUs": 476716,
+      "percent": 23.537660226738023
+    },
+    {
+      "name": "(anonymous)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 423454,
+      "percent": 20.907870458833187
+    },
+    {
+      "name": "(garbage collector)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 117500,
+      "percent": 5.8015151088734545
+    },
+    {
+      "name": "(program)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 7165,
+      "percent": 0.3537689851496026
+    },
+    {
+      "name": "runFor",
+      "file": "benchmark/profile-workload.js",
+      "line": 25,
+      "selfUs": 3959,
+      "percent": 0.19547402822153195
+    },
+    {
+      "name": "asString",
+      "file": "lib/serializer.js",
+      "line": 6,
+      "selfUs": 1291,
+      "percent": 0.0637426043026011
+    },
+    {
+      "name": "measureWorkload",
+      "file": "benchmark/profile-workload.js",
+      "line": 39,
+      "selfUs": 1125,
+      "percent": 0.055546421255171376
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "kind": "nullable-number",
+  "mechanism": "default",
+  "duration": "2000",
+  "startUs": 951807245975,
+  "endUs": 951809248833,
+  "iterations": 40,
+  "outputType": "number",
+  "sampledUs": 2002167,
+  "samples": 506,
+  "functions": [
+    {
+      "name": "asNumber",
+      "file": "lib/serializer.js",
+      "line": 79,
+      "selfUs": 1040963,
+      "percent": 51.99181686642523
+    },
+    {
+      "name": "anonymous0",
+      "file": "(generated code / eval)",
+      "line": 31,
+      "selfUs": 280041,
+      "percent": 13.986895199051826
+    },
+    {
+      "name": "serializeFixture",
+      "file": "benchmark/profile-workload.js",
+      "line": 22,
+      "selfUs": 260373,
+      "percent": 13.004559559717046
+    },
+    {
+      "name": "(garbage collector)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 220418,
+      "percent": 11.00897177907737
+    },
+    {
+      "name": "(anonymous)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 194955,
+      "percent": 9.737199744077293
+    },
+    {
+      "name": "(program)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 4167,
+      "percent": 0.20812449710738415
+    },
+    {
+      "name": "hrtimeBigInt",
+      "file": "node:internal/process/per_thread",
+      "line": 99,
+      "selfUs": 1250,
+      "percent": 0.06243235454385174
+    }
+  ]
+}

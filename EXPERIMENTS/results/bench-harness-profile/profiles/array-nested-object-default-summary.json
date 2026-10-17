@@ -1,0 +1,90 @@
+{
+  "kind": "nested-object",
+  "mechanism": "default",
+  "duration": "2000",
+  "startUs": 951799555306,
+  "endUs": 951802308861,
+  "iterations": 3,
+  "outputType": "number",
+  "sampledUs": 2753500,
+  "samples": 782,
+  "functions": [
+    {
+      "name": "(garbage collector)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 1594459,
+      "percent": 57.906627928091524
+    },
+    {
+      "name": "serializeFixture",
+      "file": "benchmark/profile-workload.js",
+      "line": 22,
+      "selfUs": 343045,
+      "percent": 12.458507354276376
+    },
+    {
+      "name": "asNumber",
+      "file": "lib/serializer.js",
+      "line": 79,
+      "selfUs": 258420,
+      "percent": 9.385146177592157
+    },
+    {
+      "name": "(anonymous)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 163999,
+      "percent": 5.956019611403668
+    },
+    {
+      "name": "anonymous0",
+      "file": "(generated code / eval)",
+      "line": 140,
+      "selfUs": 148621,
+      "percent": 5.397530415834392
+    },
+    {
+      "name": "anonymous2",
+      "file": "(generated code / eval)",
+      "line": 84,
+      "selfUs": 85499,
+      "percent": 3.1051025966951156
+    },
+    {
+      "name": "asInteger",
+      "file": "lib/serializer.js",
+      "line": 63,
+      "selfUs": 75332,
+      "percent": 2.7358634465226075
+    },
+    {
+      "name": "anonymous3",
+      "file": "(generated code / eval)",
+      "line": 32,
+      "selfUs": 36960,
+      "percent": 1.3422916288360267
+    },
+    {
+      "name": "asString",
+      "file": "lib/serializer.js",
+      "line": 130,
+      "selfUs": 18873,
+      "percent": 0.6854185581986563
+    },
+    {
+      "name": "(program)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 15500,
+      "percent": 0.5629199201016888
+    },
+    {
+      "name": "asString",
+      "file": "lib/serializer.js",
+      "line": 6,
+      "selfUs": 12792,
+      "percent": 0.4645723624477937
+    }
+  ]
+}

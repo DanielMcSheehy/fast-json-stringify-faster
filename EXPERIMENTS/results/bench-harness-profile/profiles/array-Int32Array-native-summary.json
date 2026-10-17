@@ -1,0 +1,41 @@
+{
+  "kind": "Int32Array",
+  "mechanism": "native",
+  "duration": "2000",
+  "startUs": 951816537843,
+  "endUs": 951818618543,
+  "iterations": 35,
+  "outputType": "number",
+  "sampledUs": 2079875,
+  "samples": 484,
+  "functions": [
+    {
+      "name": "serializeFixture",
+      "file": "benchmark/profile-workload.js",
+      "line": 22,
+      "selfUs": 1793296,
+      "percent": 86.22133541679187
+    },
+    {
+      "name": "(anonymous)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 191370,
+      "percent": 9.201033715968508
+    },
+    {
+      "name": "(garbage collector)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 86834,
+      "percent": 4.174962437646493
+    },
+    {
+      "name": "runFor",
+      "file": "benchmark/profile-workload.js",
+      "line": 25,
+      "selfUs": 8375,
+      "percent": 0.40266842959312454
+    }
+  ]
+}

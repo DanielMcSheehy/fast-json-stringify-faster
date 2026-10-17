@@ -1,0 +1,21 @@
+{
+  "baseCommit": "d335e9c21ddc12f5f365991b55d65df3d0825098",
+  "baselineArchive": "/var/folders/ps/gsygynz918z3c89d7ty1w2h40000gn/T/fjs-profile-baseline-sqvlawva",
+  "node": "v24.19.0",
+  "order": "before1, after1, before2, after2, before3, after3; array then compile then full suite",
+  "cpu": "Apple M5 Pro",
+  "logicalCpus": 18,
+  "memoryGiB": 48,
+  "platform": "darwin/arm64",
+  "release": "25.6.0",
+  "observedLoadAverage": [
+    14.96337890625,
+    19.314453125,
+    12.37841796875
+  ],
+  "loadObservedAt": "2026-10-17T00:58:54.209Z",
+  "backgroundLoad": "Several other CPU-heavy Node processes were active; no runtime code differs between before and after.",
+  "tinybenchVersion": "6.2.1",
+  "testRunner": "node:test with c8, plus tstyche; ESLint run separately",
+  "dateLocal": "2026-10-16 America/New_York"
+}

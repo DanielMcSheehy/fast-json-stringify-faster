@@ -1,0 +1,34 @@
+{
+  "kind": "nullable-number",
+  "mechanism": "json-stringify",
+  "duration": "2000",
+  "startUs": 951810250102,
+  "endUs": 951812269630,
+  "iterations": 65,
+  "outputType": "number",
+  "sampledUs": 2018334,
+  "samples": 575,
+  "functions": [
+    {
+      "name": "anonymous0",
+      "file": "(generated code / eval)",
+      "line": 31,
+      "selfUs": 1941000,
+      "percent": 96.16842405667249
+    },
+    {
+      "name": "(anonymous)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 48835,
+      "percent": 2.419569803610304
+    },
+    {
+      "name": "(garbage collector)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 28499,
+      "percent": 1.4120061397172123
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "kind": "long-string",
+  "mechanism": "default",
+  "duration": "2000",
+  "startUs": 951785860737,
+  "endUs": 951788051201,
+  "iterations": 12,
+  "outputType": "number",
+  "sampledUs": 2189667,
+  "samples": 541,
+  "functions": [
+    {
+      "name": "asString",
+      "file": "lib/serializer.js",
+      "line": 6,
+      "selfUs": 1322249,
+      "percent": 60.38584862447121
+    },
+    {
+      "name": "(anonymous)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 346207,
+      "percent": 15.810942942465681
+    },
+    {
+      "name": "serializeFixture",
+      "file": "benchmark/profile-workload.js",
+      "line": 22,
+      "selfUs": 181374,
+      "percent": 8.283177305042273
+    },
+    {
+      "name": "(garbage collector)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 168876,
+      "percent": 7.712405584958809
+    },
+    {
+      "name": "anonymous0",
+      "file": "(generated code / eval)",
+      "line": 31,
+      "selfUs": 130252,
+      "percent": 5.948484404249596
+    },
+    {
+      "name": "RegExp: [\\u0000-\\u001f\\u0022\\u005c\\ud800-\\udfff]",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 38126,
+      "percent": 1.7411779964716096
+    },
+    {
+      "name": "(program)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 2583,
+      "percent": 0.1179631423408217
+    }
+  ]
+}

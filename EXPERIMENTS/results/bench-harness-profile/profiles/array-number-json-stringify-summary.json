@@ -1,0 +1,48 @@
+{
+  "kind": "number",
+  "mechanism": "json-stringify",
+  "duration": "2000",
+  "startUs": 951777071800,
+  "endUs": 951779118543,
+  "iterations": 122,
+  "outputType": "number",
+  "sampledUs": 2046792,
+  "samples": 622,
+  "functions": [
+    {
+      "name": "anonymous0",
+      "file": "(generated code / eval)",
+      "line": 31,
+      "selfUs": 1915166,
+      "percent": 93.5691560256245
+    },
+    {
+      "name": "(garbage collector)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 92708,
+      "percent": 4.529429468162862
+    },
+    {
+      "name": "(anonymous)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 36501,
+      "percent": 1.783327275072406
+    },
+    {
+      "name": "runFor",
+      "file": "benchmark/profile-workload.js",
+      "line": 25,
+      "selfUs": 1250,
+      "percent": 0.06107117870306313
+    },
+    {
+      "name": "hrtimeBigInt",
+      "file": "node:internal/process/per_thread",
+      "line": 99,
+      "selfUs": 1167,
+      "percent": 0.05701605243717974
+    }
+  ]
+}

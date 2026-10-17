@@ -1,0 +1,30 @@
+{
+  "npmTest": {
+    "exitCode": 0,
+    "testsPassed": 587,
+    "testsFailed": 0,
+    "coverage": {
+      "statements": 100,
+      "branches": 100,
+      "functions": 100,
+      "lines": 100
+    },
+    "typescriptAssertionsPassed": 15
+  },
+  "npmRunLint": {
+    "exitCode": 0
+  },
+  "benchmarks": {
+    "beforeRunsPerSuite": 3,
+    "afterRunsPerSuite": 3,
+    "arrayCasesPerRun": 108,
+    "supportedArrayCasesPerRun": 92,
+    "compileCasesPerRun": 7,
+    "fullSuiteCasesPerRun": 30
+  },
+  "profiles": {
+    "count": 19,
+    "compressedRawReanalysisPassed": 19
+  },
+  "runtimeChanges": false
+}

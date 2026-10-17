@@ -1,0 +1,392 @@
+{
+  "case": "refs",
+  "kind": "integer",
+  "mechanism": "default",
+  "duration": "2000",
+  "startUs": 951825529067,
+  "endUs": 951827585895,
+  "iterations": 443,
+  "outputType": "function",
+  "sampledUs": 2056917,
+  "samples": 604,
+  "functions": [
+    {
+      "name": "build",
+      "file": "index.js",
+      "line": 323,
+      "selfUs": 420332,
+      "percent": 20.43504915366055
+    },
+    {
+      "name": "traverse",
+      "file": "index.js",
+      "line": 1231,
+      "selfUs": 323919,
+      "percent": 15.7477914762725
+    },
+    {
+      "name": "validate10",
+      "file": "lib/schema-validator.js",
+      "line": 73,
+      "selfUs": 209459,
+      "percent": 10.183152747534296
+    },
+    {
+      "name": "(garbage collector)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 198082,
+      "percent": 9.630043409627126
+    },
+    {
+      "name": "buildInnerObject",
+      "file": "index.js",
+      "line": 595,
+      "selfUs": 190169,
+      "percent": 9.245341450335625
+    },
+    {
+      "name": "buildObject",
+      "file": "index.js",
+      "line": 796,
+      "selfUs": 89248,
+      "percent": 4.338920821793004
+    },
+    {
+      "name": "assertObjectDepth",
+      "file": "index.js",
+      "line": 81,
+      "selfUs": 78582,
+      "percent": 3.8203777789769835
+    },
+    {
+      "name": "getPropertyLocation",
+      "file": "lib/location.js",
+      "line": 10,
+      "selfUs": 65418,
+      "percent": 3.180390847078419
+    },
+    {
+      "name": "assertSchemaDepth",
+      "file": "index.js",
+      "line": 115,
+      "selfUs": 36291,
+      "percent": 1.7643395431123376
+    },
+    {
+      "name": "Ajv",
+      "file": "node_modules/ajv/dist/ajv.js",
+      "line": 10,
+      "selfUs": 35209,
+      "percent": 1.7117365455193378
+    },
+    {
+      "name": "addSchema",
+      "file": "node_modules/json-schema-ref-resolver/index.js",
+      "line": 22,
+      "selfUs": 33165,
+      "percent": 1.6123645241883848
+    },
+    {
+      "name": "getDataByJSONPointer",
+      "file": "node_modules/json-schema-ref-resolver/index.js",
+      "line": 271,
+      "selfUs": 30166,
+      "percent": 1.4665637942610226
+    },
+    {
+      "name": "addVocabulary",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 327,
+      "selfUs": 26501,
+      "percent": 1.2883845094381543
+    },
+    {
+      "name": "addSchema",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 215,
+      "selfUs": 26292,
+      "percent": 1.2782236716406155
+    },
+    {
+      "name": "(anonymous)",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 364,
+      "selfUs": 25874,
+      "percent": 1.257901996045538
+    },
+    {
+      "name": "addRule",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 565,
+      "selfUs": 24836,
+      "percent": 1.2074381221993886
+    },
+    {
+      "name": "(anonymous)",
+      "file": "node_modules/ajv/dist/compile/resolve.js",
+      "line": 103,
+      "selfUs": 24043,
+      "percent": 1.1688852783072918
+    },
+    {
+      "name": "resolveRef",
+      "file": "index.js",
+      "line": 189,
+      "selfUs": 23251,
+      "percent": 1.1303810508639873
+    },
+    {
+      "name": "buildSingleTypeSerializer",
+      "file": "index.js",
+      "line": 1177,
+      "selfUs": 21959,
+      "percent": 1.0675685990246568
+    },
+    {
+      "name": "Ajv",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 94,
+      "selfUs": 20874,
+      "percent": 1.014819752085281
+    },
+    {
+      "name": "(program)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 15916,
+      "percent": 0.7737793989742902
+    },
+    {
+      "name": "_traverse",
+      "file": "node_modules/json-schema-traverse/index.js",
+      "line": 67,
+      "selfUs": 14125,
+      "percent": 0.6867073391877261
+    },
+    {
+      "name": "buildValue",
+      "file": "index.js",
+      "line": 1503,
+      "selfUs": 11916,
+      "percent": 0.5793136038060845
+    },
+    {
+      "name": "serialize",
+      "file": "node_modules/fast-uri/index.js",
+      "line": 194,
+      "selfUs": 10583,
+      "percent": 0.51450787756628
+    },
+    {
+      "name": "isValidSchema",
+      "file": "index.js",
+      "line": 175,
+      "selfUs": 8208,
+      "percent": 0.39904381168515796
+    },
+    {
+      "name": "eachItem",
+      "file": "node_modules/ajv/dist/compile/util.js",
+      "line": 82,
+      "selfUs": 7959,
+      "percent": 0.38693831593593714
+    },
+    {
+      "name": "addKeyword",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 332,
+      "selfUs": 7957,
+      "percent": 0.386841083038353
+    },
+    {
+      "name": "#insertSchemaBySchemaId",
+      "file": "node_modules/json-schema-ref-resolver/index.js",
+      "line": 241,
+      "selfUs": 7749,
+      "percent": 0.37672886168960634
+    },
+    {
+      "name": "Validator",
+      "file": "lib/validator.js",
+      "line": 10,
+      "selfUs": 7457,
+      "percent": 0.3625328586423273
+    },
+    {
+      "name": "_getFullPath",
+      "file": "node_modules/ajv/dist/compile/resolve.js",
+      "line": 78,
+      "selfUs": 6583,
+      "percent": 0.3200420823980744
+    },
+    {
+      "name": "parse",
+      "file": "node_modules/fast-uri/index.js",
+      "line": 607,
+      "selfUs": 5418,
+      "percent": 0.2634039195553345
+    },
+    {
+      "name": "(anonymous)",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 365,
+      "selfUs": 4708,
+      "percent": 0.228886240912978
+    },
+    {
+      "name": "RegExp: ^(?:[a-z][a-z0-9+\\-.]*:)?(?:\\/?\\/(?:(?:[a-z0-9\\-._~!$&'()*+,;=:]|%[0-9a-f]{2})*@)?(?:\\[(?:(?:(?:(?:[0-9a-f]{1,4}:){6}|::(?:[0-9a-f]{1,4}:){5}|(?:[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){4}|(?:(?:[0-9a-f]{1,4}:){0,1}[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){3}|(?:(?:[0-9a-f]{1,4}:){0,2}[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){2}|(?:(?:[0-9a-f]{1,4}:){0,3}[0-9a-f]{1,4})?::[0-9a-f]{1,4}:|(?:(?:[0-9a-f]{1,4}:){0,4}[0-9a-f]{1,4})?::)(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?))|(?:(?:[0-9a-f]{1,4}:){0,5}[0-9a-f]{1,4})?::[0-9a-f]{1,4}|(?:(?:[0-9a-f]{1,4}:){0,6}[0-9a-f]{1,4})?::)|[Vv][0-9a-f]+\\.[a-z0-9\\-._~!$&'()*+,;=:]+)\\]|(?:(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)|(?:[a-z0-9\\-._~!$&'\"()*+,;=]|%[0-9a-f]{2})*)(?::\\d*)?(?:\\/(?:[a-z0-9\\-._~!$&'\"()*+,;=:@]|%[0-9a-f]{2})*)*|\\/(?:(?:[a-z0-9\\-._~!$&'\"()*+,;=:@]|%[0-9a-f]{2})+(?:\\/(?:[a-z0-9\\-._~!$&'\"()*+,;=:@]|%[0-9a-f]{2})*)*)?|(?:[a-z0-9\\-._~!$&'\"()*+,;=:@]|%[0-9a-f]{2})+(?:\\/(?:[a-z0-9\\-._~!$&'\"()*+",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 4583,
+      "percent": 0.22280918481397158
+    },
+    {
+      "name": "addFormats",
+      "file": "node_modules/ajv-formats/dist/index.js",
+      "line": 27,
+      "selfUs": 4125,
+      "percent": 0.20054285126721205
+    },
+    {
+      "name": "asComment",
+      "file": "index.js",
+      "line": 266,
+      "selfUs": 3750,
+      "percent": 0.18231168297019276
+    },
+    {
+      "name": "_addSchema",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 435,
+      "selfUs": 3500,
+      "percent": 0.1701575707721799
+    },
+    {
+      "name": "compileFixture",
+      "file": "benchmark/profile-workload.js",
+      "line": 16,
+      "selfUs": 3459,
+      "percent": 0.16816429637170582
+    },
+    {
+      "name": "escapeJsonPtr",
+      "file": "node_modules/json-schema-traverse/index.js",
+      "line": 91,
+      "selfUs": 3209,
+      "percent": 0.15601018417369297
+    },
+    {
+      "name": "hasSchema",
+      "file": "node_modules/json-schema-ref-resolver/index.js",
+      "line": 72,
+      "selfUs": 2500,
+      "percent": 0.12154112198012851
+    },
+    {
+      "name": "addBeforeRule",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 594,
+      "selfUs": 2417,
+      "percent": 0.11750595673038824
+    },
+    {
+      "name": "getMetaSchemaOptions",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 534,
+      "selfUs": 2292,
+      "percent": 0.11142890063138182
+    },
+    {
+      "name": "(anonymous)",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 553,
+      "selfUs": 1750,
+      "percent": 0.08507878538608996
+    },
+    {
+      "name": "getSafeSchemaRef",
+      "file": "index.js",
+      "line": 270,
+      "selfUs": 1542,
+      "percent": 0.07496656403734327
+    },
+    {
+      "name": "addMetaSchema",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 240,
+      "selfUs": 1417,
+      "percent": 0.06888950793833684
+    },
+    {
+      "name": "RegExp: [^a-zA-Z0-9]",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 1292,
+      "percent": 0.06281245183933042
+    },
+    {
+      "name": "hrtimeBigInt",
+      "file": "node:internal/process/per_thread",
+      "line": 99,
+      "selfUs": 1291,
+      "percent": 0.06276383539053837
+    },
+    {
+      "name": "detectRecursiveSchemas",
+      "file": "index.js",
+      "line": 1229,
+      "selfUs": 1250,
+      "percent": 0.060770560990064254
+    },
+    {
+      "name": "RegExp: ^(?:[^#/:?]+:)?([/\\\\\\t\\n\\r]*)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 1167,
+      "percent": 0.056735395740323984
+    },
+    {
+      "name": "get",
+      "file": "node_modules/ajv/dist/compile/codegen/index.js",
+      "line": 17,
+      "selfUs": 1125,
+      "percent": 0.05469350489105783
+    },
+    {
+      "name": "requiredOptions",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 65,
+      "selfUs": 1083,
+      "percent": 0.052651614041791674
+    },
+    {
+      "name": "parseWithStatus",
+      "file": "node_modules/fast-uri/index.js",
+      "line": 414,
+      "selfUs": 1041,
+      "percent": 0.05060972319252551
+    },
+    {
+      "name": "isJSONType",
+      "file": "node_modules/ajv/dist/compile/rules.js",
+      "line": 6,
+      "selfUs": 959,
+      "percent": 0.046623174391577295
+    },
+    {
+      "name": "checkOptions",
+      "file": "node_modules/ajv/dist/core.js",
+      "line": 493,
+      "selfUs": 833,
+      "percent": 0.04049750184377882
+    },
+    {
+      "name": "RegExp: ^[a-z_$][a-z0-9_$:-]*$",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 83,
+      "percent": 0.004035165249740267
+    }
+  ]
+}

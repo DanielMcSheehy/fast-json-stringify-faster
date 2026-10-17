@@ -1,0 +1,55 @@
+{
+  "kind": "flat-object",
+  "mechanism": "default",
+  "duration": "2000",
+  "startUs": 951792578514,
+  "endUs": 951794699428,
+  "iterations": 18,
+  "outputType": "number",
+  "sampledUs": 2120833,
+  "samples": 557,
+  "functions": [
+    {
+      "name": "(garbage collector)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 931584,
+      "percent": 43.92538214937244
+    },
+    {
+      "name": "(anonymous)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 587207,
+      "percent": 27.687564273094583
+    },
+    {
+      "name": "serializeFixture",
+      "file": "benchmark/profile-workload.js",
+      "line": 22,
+      "selfUs": 346793,
+      "percent": 16.351735379447604
+    },
+    {
+      "name": "anonymous0",
+      "file": "(generated code / eval)",
+      "line": 84,
+      "selfUs": 253916,
+      "percent": 11.972465535947432
+    },
+    {
+      "name": "anonymous1",
+      "file": "(generated code / eval)",
+      "line": 32,
+      "selfUs": 1292,
+      "percent": 0.06091945947653587
+    },
+    {
+      "name": "(program)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 41,
+      "percent": 0.0019332026614070981
+    }
+  ]
+}

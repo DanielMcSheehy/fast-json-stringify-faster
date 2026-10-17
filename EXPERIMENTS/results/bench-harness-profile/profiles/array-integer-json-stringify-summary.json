@@ -1,0 +1,55 @@
+{
+  "kind": "integer",
+  "mechanism": "json-stringify",
+  "duration": "2000",
+  "startUs": 951770730630,
+  "endUs": 951772751373,
+  "iterations": 312,
+  "outputType": "number",
+  "sampledUs": 2021208,
+  "samples": 532,
+  "functions": [
+    {
+      "name": "anonymous0",
+      "file": "(generated code / eval)",
+      "line": 31,
+      "selfUs": 1649375,
+      "percent": 81.60342725736292
+    },
+    {
+      "name": "(anonymous)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 299917,
+      "percent": 14.838502519285496
+    },
+    {
+      "name": "(garbage collector)",
+      "file": "(V8)",
+      "line": 0,
+      "selfUs": 53541,
+      "percent": 2.6489604236674307
+    },
+    {
+      "name": "serializeFixture",
+      "file": "benchmark/profile-workload.js",
+      "line": 22,
+      "selfUs": 11500,
+      "percent": 0.5689666773533452
+    },
+    {
+      "name": "runFor",
+      "file": "benchmark/profile-workload.js",
+      "line": 25,
+      "selfUs": 6625,
+      "percent": 0.3277742815187749
+    },
+    {
+      "name": "measureWorkload",
+      "file": "benchmark/profile-workload.js",
+      "line": 39,
+      "selfUs": 250,
+      "percent": 0.012368840812029241
+    }
+  ]
+}
