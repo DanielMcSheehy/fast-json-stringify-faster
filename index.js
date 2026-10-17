@@ -81,6 +81,7 @@ function schemaDepthError (maxDepth, name) {
 function assertObjectDepth (schema, maxDepth, name) {
   const stack = [{ value: schema, depth: 0, exit: false }]
   const path = new WeakSet()
+  let hasRef = false
 
   while (stack.length > 0) {
     const entry = stack.pop()
@@ -107,9 +108,14 @@ function assertObjectDepth (schema, maxDepth, name) {
     stack.push({ value, depth: entry.depth, exit: true })
 
     for (const key in value) {
+      if (key === '$ref' && typeof value[key] === 'string') {
+        hasRef = true
+      }
       stack.push({ value: value[key], depth: entry.depth + 1, exit: false })
     }
   }
+
+  return hasRef
 }
 
 function assertSchemaDepth (schema, maxDepth, name) {
@@ -324,7 +330,9 @@ function build (schema, options) {
   options = options || {}
 
   const maxDepth = getMaxDepth(options)
-  assertObjectDepth(schema, maxDepth)
+  // assertObjectDepth also reports whether any $ref appears; recursive-schema
+  // detection is only needed when $ref can form cycles.
+  let hasRef = assertObjectDepth(schema, maxDepth)
   assertSchemaDepth(schema, maxDepth)
   isValidSchema(schema)
 
@@ -357,7 +365,9 @@ function build (schema, options) {
       const schema = options.schema[key]
       const schemaId = getSchemaId(schema, key)
       if (!context.refResolver.hasSchema(schemaId)) {
-        assertObjectDepth(schema, maxDepth, key)
+        if (assertObjectDepth(schema, maxDepth, key)) {
+          hasRef = true
+        }
         assertSchemaDepth(schema, maxDepth, key)
         isValidSchema(schema, key)
         context.refResolver.addSchema(schema, key)
@@ -395,7 +405,11 @@ function build (schema, options) {
   }
 
   const location = new Location(schema, context.rootSchemaId)
-  detectRecursiveSchemas(context, location)
+  // Without $ref, json-pointer paths are unique in a tree walk, so no cycle
+  // can appear in recursivePaths. Skip the third full-schema traversal.
+  if (hasRef) {
+    detectRecursiveSchemas(context, location)
+  }
   const code = buildValue(context, location, 'input')
 
   let contextFunctionCode = `
@@ -437,23 +451,35 @@ function build (schema, options) {
   }
 
   const serializer = new Serializer(options)
-  const validator = new Validator(
-    options.ajv,
-    options.mode === 'standalone' && options.inlineValidators
-  )
+  // Ajv construction dominates tiny build() cost. Only create a Validator when
+  // generated code needs validator.validate (anyOf/oneOf/if-then-else), or when
+  // debug mode exposes the instance. Standalone already emits `validator = null`
+  // when validatorSchemasIds is empty.
+  const needsValidator =
+    context.validatorSchemasIds.size > 0 ||
+    options.mode === 'debug'
 
-  for (const schemaId of context.validatorSchemasIds) {
-    const schema = context.refResolver.getSchema(schemaId)
-    validator.addSchema(schema, schemaId)
+  const validator = needsValidator
+    ? new Validator(
+      options.ajv,
+      options.mode === 'standalone' && options.inlineValidators
+    )
+    : null
 
-    const dependencies = getSchemaDependencies(context.refResolver, schemaId)
-    for (const [schemaId, schema] of Object.entries(dependencies)) {
+  if (validator !== null) {
+    for (const schemaId of context.validatorSchemasIds) {
+      const schema = context.refResolver.getSchema(schemaId)
       validator.addSchema(schema, schemaId)
-    }
-  }
 
-  if (options.compileValidators) {
-    validator.compileSchemas(context.validatorSchemaRefs)
+      const dependencies = getSchemaDependencies(context.refResolver, schemaId)
+      for (const [schemaId, schema] of Object.entries(dependencies)) {
+        validator.addSchema(schema, schemaId)
+      }
+    }
+
+    if (options.compileValidators) {
+      validator.compileSchemas(context.validatorSchemaRefs)
+    }
   }
 
   if (options.mode === 'debug') {
@@ -1236,8 +1262,8 @@ function detectRecursiveSchemas (context, location) {
       throw schemaDepthError(context.maxDepth)
     }
 
-    const schemaId = location.schemaId || ''
-    const jsonPointer = location.jsonPointer || ''
+    const schemaId = location.schemaId
+    const jsonPointer = location.jsonPointer
     const fullPath = `${schemaId}#${jsonPointer}`
 
     if (pathStack.has(fullPath)) {
