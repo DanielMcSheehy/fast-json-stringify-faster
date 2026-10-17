@@ -99,3 +99,105 @@ Clear wins on the targeted compile cases that do not need Ajv (`tiny` / `wide` /
 - `npm test` (c8 100% + tstyche) — pass  
 - `eslint` on touched files — pass  
 - Branch pushed to `mine` (`exp/compile-overhead-build`)
+
+## Ref-heavy regression fix
+
+The integrated five-round container comparison in [container-results.md](container-results.md)
+superseded the original host measurements: `refs` regressed **7.3%** and the full
+suite's `oneOf external refs compile and first stringify` regressed **7.0%**.
+This follow-up compares `origin/main` (`5f69709`) with the integrated branch before
+the fix (`1400b47`) and the traversal fix (`0d56f6b`).
+
+### Reproduction and profile
+
+Created `/tmp/fjs-main` with `git worktree add /tmp/fjs-main origin/main`, installed
+dependencies, and copied the canonical `bench-compile.js`, `experiment-fixtures.js`,
+and `experiment-utils.js` into it. Host Node was v24.19.0; both sides used Ajv
+8.20.0, json-schema-ref-resolver 3.0.0, fast-uri 4.2.1, and tinybench 6.2.1.
+Three alternating `node benchmark/bench-compile.js --case refs` runs gave median
+throughputs of **2,865.15 → 2,815.25 ops/s (-1.7%)** before the fix. The host did
+not reproduce the container regression's magnitude, so the isolated comparison
+below remains the performance gate.
+
+Profiled each revision with:
+
+```sh
+node --cpu-prof --cpu-prof-interval=100 --cpu-prof-dir=<profile-directory> \
+  benchmark/bench-compile.js --case refs --iterations 10000
+```
+
+Worker-thread profile self-sample counts (the main thread mostly waits):
+
+| Function | origin/main | Integrated before fix | Fixed |
+| --- | ---: | ---: | ---: |
+| `assertObjectDepth` | 1,402 | 3,015 | 1,327 |
+| `Location.getPropertyLocation` | 2,286 | 2,119 | 180 |
+| recursive-schema `traverse` | 10,212 | 8,341 | 7,997 |
+| `build` | 3,122 | 4,892 | 3,382 |
+| `buildInnerObject` | 2,059 | 2,605 | 2,681 |
+| Total worker samples | 30,059 | 34,425 | 23,867 |
+
+These samples include startup/warmup and are diagnostic, not throughput estimates;
+JIT inlining can also move samples between functions. The integrated depth scan
+spends more time processing properties, while pointer escaping and recursive
+traversal remain substantial costs. The `$ref` scan was already folded into the
+depth walk, not a separate traversal. Ajv is still constructed at the same point
+in `build()` and is absent altogether for the `refs` fixture; neither duplicate
+Ajv construction nor a second schema clone explains this regression. The profile
+also shows the integrated object code generation costs more than main, so it does
+not isolate the entire regression to lazy Validator creation.
+
+### Fix and semantics
+
+- `assertObjectDepth` reads each child once, detects `$ref` from that value, and
+  only allocates traversal entries for non-null objects. Primitive entries were
+  previously allocated and then immediately discarded. Object depths, circular
+  object detection, and the `$ref` recursion decision retain their checks.
+- `Location.getPropertyLocation` tests for `~` or `/` before escaping. Ordinary
+  property names and numeric tuple indexes avoid two string replacements;
+  names that require JSON-pointer escaping retain the same replacement order.
+
+Lazy Validator creation, recursion detection, `lib/validator.js`, and generated
+serializer code are unchanged. No validators or mutable schemas are shared
+between builds. Raw profiles and host measurements are in `/tmp/fjs-ref-profiles`.
+
+### Isolated compile comparison
+
+Ran only the requested compile suite, with three alternating rounds, Node
+v24.22.0 on linux/arm64, CPUs 4–7, and the existing 6 GiB container limit:
+
+```sh
+ROUNDS=3 SUITES=compile benchmark/docker/run.sh /tmp/fjs-docker-refs
+node benchmark/docker/compare.js /tmp/fjs-docker-refs
+```
+
+`base=5f69709bed95604c8a403cd217186b528cb2fdd9`
+`head=0d56f6bccc63ea6cbbf355fa0c70e3e1f954c419`
+
+| Case | base ops/s | head ops/s | Change | CV base / head |
+| --- | ---: | ---: | ---: | ---: |
+| tiny | 19456.96 | 193554.63 |  894.8% | 16.9% / 1.0% |
+| wide | 3782.51 | 6606.11 |   74.6% | 1.6% / 2.3% |
+| deep | 8476.05 | 17057.57 |  101.2% | 0.3% / 2.5% |
+| refs | 2334.41 | 2840.57 |   21.7% | 1.8% / 1.1% |
+| array-of-objects | 15810.15 | 61538.46 |  289.2% | 1.9% / 2.2% |
+| oneOf-anyOf | 8022.72 | 8303.06 |    3.5% | 0.4% / 1.5% |
+| standalone | 3834.47 | 6912.47 |   80.3% | 2.2% / 1.3% |
+
+All requested thresholds pass: refs and unions exceed -2%, and every other case
+exceeds +70%. The tiny baseline has high variation, but even its fastest round is
+well below the fixed branch. These results supersede the earlier compile table;
+the full three-suite container run remains a coordinator follow-up.
+
+Separately ran just `oneOf external refs compile and first stringify` from
+`benchmark/bench.js` through its unchanged `bench-thread.js` worker on the host,
+three alternating pairs. Base throughput was 1,957 / 1,806 / 1,846 ops/s; fixed
+throughput was 2,029 / 2,028 / 1,837 ops/s. Median throughput improved
+**1,846 → 2,028 ops/s (+9.9%)**. This narrower host check passes, but does not
+replace the coordinator's isolated full-suite verification.
+
+Validation: `npm test` passes **652 tests**, **100% statements/branches/functions/
+lines**, and **15 TypeScript assertions**; `npm run lint` passes. Existing tests
+cover escaped property names, recursive references, maximum depth, boolean
+schemas, tuple items, standalone output, and validator options. Recommendation:
+**merge the fix**, retaining the lazy-validator and no-ref traversal wins.

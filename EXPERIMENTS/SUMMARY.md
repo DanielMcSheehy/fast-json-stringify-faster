@@ -202,8 +202,14 @@ that the strict no-regression performance gate has been met. Byte-equivalence an
 
 Follow-ups: measure mixed/coercing string-array workloads now that misses resume from
 saved values; tune copying thresholds on representative payloads and supported Node
-versions; retain scalar helper experiments as separate work; profile remaining union/
-Ajv and reference-heavy compilation costs. Rejected general native auto-selection
+versions; retain scalar helper experiments as separate work. The
+[ref-heavy regression fix](compile-overhead-build.md#ref-heavy-regression-fix)
+now passes the three-round isolated compile gate: refs **+21.7%**, unions
+**+3.5%**, tiny **+894.8%**, wide **+74.6%**, deep **+101.2%**, array-of-objects
+**+289.2%**, and standalone **+80.3%** versus `origin/main`; this supersedes the
+earlier compile regression numbers. The external-ref compile/first-stringify
+host check is **+9.9%**; the coordinator's full container recheck remains pending.
+Rejected general native auto-selection
 remains unsafe without runtime semantic guards. Large-array GC variation and this
 single-host sample limit the precision of small percentage changes.
 
