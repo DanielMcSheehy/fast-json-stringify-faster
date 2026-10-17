@@ -1,7 +1,5 @@
 # Array string accumulation experiment
 
-**Work in progress:** all large-array and compilation measurements are complete; full-suite candidate validation and final checks are still running. The coordinator received the interim findings through Orca on 2026-10-17 at 01:11 UTC; this report will be completed before final worker settlement.
-
 Recommendation: **reject** the blanket accumulation rewrites; retain the existing production `buildArray()` implementation. The benchmark-only implementations and regression tests are retained to make the negative result reproducible.
 
 ## Hypothesis and implementation
@@ -23,24 +21,39 @@ The 1,024-item flattening interval was explored first and aborted during the mil
 
 ## V8 flattening verification
 
-`node --allow-natives-syntax benchmark/probe-array-flattening.js` builds a cons string and inspects it using `%DebugPrint` before and after each operation. Both `.concat('')` and reading `.length` return the same `CONS_ONE_BYTE_STRING_TYPE` object. `%FlattenString` returns a distinct `SEQ_ONE_BYTE_STRING_TYPE` object. The full diagnostic output is in `array-string-accumulation-data/flattening-probe.txt`; the benchmark uses the operation that demonstrably flattens.
+`node --allow-natives-syntax benchmark/probe-array-flattening.js` builds a cons string and inspects it using `%DebugPrint` before and after each operation. Both `.concat('')` and reading `.length` return the same `CONS_ONE_BYTE_STRING_TYPE` object. `%FlattenString` returns a distinct `SEQ_ONE_BYTE_STRING_TYPE` object. The full diagnostic output is in [the V8 probe output](array-string-accumulation-data/flattening-probe.txt); the benchmark uses the operation that demonstrably flattens.
 
 ## Measurement method
 
 - Node **v24.19.0**, macOS arm64, **Apple M5 Pro**, 48 GiB RAM, same machine and checkout for all variants. Dependencies already existed; no installation or dependency changes were needed.
 - Baseline source equals the `feature/speedup` commit above. Each candidate is loaded from that same source with only the two loop substitutions, avoiding checkout/dependency drift.
-- Created the missing `benchmark/bench-large-array.js` and `benchmark/bench-compile.js`, using the existing `tinybench` dependency and throughput statistic from `benchmark/bench-thread.js`.
+- Created the missing `benchmark/bench-large-array.js` and `benchmark/bench-compile.js`, using the existing `tinybench` 6.2.1 dependency and throughput statistic from `benchmark/bench-thread.js`.
 - Large matrix: 1,000 / 20,000 / 100,000 / 1,000,000 elements × six kinds × both paths. Integer values cycle modulo 10,000; numbers add 0.25; short strings are 7–8 characters; long strings are 132 characters including escapes; flat objects have three scalar properties; nested objects contain an object and a three-integer array. Long-string output at one million elements is 138,000,001 bytes.
 - Each matrix configuration and compilation suite runs **three times**, with variant order rotated between repetitions. Large tasks use 200 ms measurement, at least two samples, and 50 ms warmup with at least one sample; expensive cases exceed these times. Compilation tasks use 500 ms, at least ten samples, and 100 ms warmup with at least three samples.
 - Every timed serialization includes `Buffer.byteLength(result)`, matching the existing full-suite harness and accounting for eventual flattening. Large-array outputs are checked byte-for-byte against `JSON.stringify` before timing.
 - The complete, unchanged **30-case `benchmark/bench.js` suite** is run three times each for Baseline and the strongest remaining candidate. Its existing defaults, worker isolation, data generation, and `Buffer.byteLength` calls are preserved. The existing case named “short array of long strings” actually supplies short strings; it is deliberately unchanged, while the new large-array matrix includes real long strings.
-- Each table cell reports **median ops/sec (CV%)** across the three independent runs. CV is sample standard deviation divided by the mean, not the within-run confidence interval. Higher ops/sec is better. `array-string-accumulation-data/results.json` also includes each run's throughput, RME, sample count, and the sample variance in squared ops/sec.
+- Each table cell reports **median ops/sec (CV%)** across the three independent runs. CV is sample standard deviation divided by the mean, not the within-run confidence interval. Higher ops/sec is better. The [raw results file](array-string-accumulation-data/results.json) also includes each run's throughput, RME, sample count, and the sample variance in squared ops/sec.
 - This was a shared workstation with other processes and benchmark workers active. Large-allocation cases can have only two timed samples and substantial GC/scheduling variance. Differences near the 2% gate cannot establish a reliable win on this evidence.
 
+## Verdict and acceptance check
 
-## Completed large-array and compilation measurements
+The strongest strategy by the geometric mean across the 36 large-array cases (both paths, sizes at least 20,000) is **Unroll ×4: +10.2%**. It nevertheless has **11 of 36 large cases** below -2%, including **20,000 inline numbers: 881.74 → 720.05 ops/sec (-18.3%)**, and **6 of 12 small cases** below -2%, including **1,000 inline numbers: 23,123.41 → 18,138.43 ops/sec (-21.6%)**. The acceptance rule requires avoiding these regressions, not merely improving an average.
 
-### inline arrays
+| Variant | Large geometric-mean change | Large cases >+5% / 36 | Large cases <-2% / 36 | Small cases <-2% / 12 | Worst small change |
+|---|---:|---:|---:|---:|---:|
+| local | -8.8% | 8 | 22 | 8 | -14.9% |
+| flatten | -24.0% | 11 | 18 | 3 | -23.7% |
+| join | -30.1% | 7 | 26 | 12 | -47.6% |
+| unroll4 | +10.2% | 20 | 11 | 6 | -21.6% |
+| comma | -17.2% | 4 | 27 | 11 | -21.5% |
+
+In the full suite, **6 of 30 median comparisons** are below -2%; the worst is **oneOf external refs compile and first stringify: -28.8%**. The complete table is below. This is a failed acceptance check, not proof that every observed difference is caused by unrolling: the unchanged scalar cases and reported CV show substantial shared-machine noise.
+
+**Reject the blanket production rewrite.** Keep the baseline, the reproducible benchmark implementations, and the semantic regression tests. Native flattening is costly, join has an actual output counterexample, and the remaining strategies do not clear the required gates. A thresholded or item-specific unroll experiment on a quieter machine is optional follow-up.
+
+## Complete measurements
+
+### Inline arrays
 
 | Size / kind | Baseline | Local | Flatten | Join | Unroll ×4 | Comma |
 |---|---:|---:|---:|---:|---:|---:|
@@ -69,7 +82,7 @@ The 1,024-item flattening interval was explored first and aborted during the mil
 | 1000000 / flat-object | 3.73 (28.9%) | 3.10 (69.7%) | 2.40 (33.9%) | 4.94 (27.4%) | 3.82 (15.8%) | 1.31 (26.3%) |
 | 1000000 / nested-object | 1.83 (21.3%) | 1.78 (72.0%) | 0.93 (31.8%) | 2.10 (59.5%) | 1.69 (18.0%) | 0.88 (5.0%) |
 
-### named arrays
+### Named arrays
 
 | Size / kind | Baseline | Local | Flatten | Join | Unroll ×4 | Comma |
 |---|---:|---:|---:|---:|---:|---:|
@@ -107,6 +120,77 @@ The 1,024-item flattening interval was explored first and aborted during the mil
 | deep | 10,330.52 (15.0%) | 9,049.21 (24.1%) | 9,044.42 (17.5%) | 8,057.88 (16.5%) | 9,316.72 (2.3%) | 8,543.48 (18.8%) |
 | $ref-heavy | 5,644.73 (20.3%) | 4,843.04 (29.1%) | 4,436.05 (24.8%) | 5,287.22 (10.2%) | 4,056.29 (12.7%) | 3,950.31 (28.8%) |
 
-## Validation completed before full-suite run
+### Full benchmark/bench.js suite
 
-`npm test` passed 595 tests with 100% statement/branch/function/line coverage and 15 TypeScript assertions. `npm run lint` passed. `node --allow-natives-syntax benchmark/check-array-accumulation.js` passed 552 differential checks and reproduced the known join semantic failure on both paths. No production changes are retained.
+| Case | Baseline | unroll4 | Change |
+|---|---:|---:|---:|
+| short string | 10,906,777.00 (43.7%) | 19,706,722.00 (34.1%) | +80.7% |
+| unsafe short string | 12,326,898.00 (30.2%) | 20,437,412.00 (32.7%) | +65.8% |
+| short string with double quote | 8,430,830.00 (47.1%) | 12,723,947.00 (32.0%) | +50.9% |
+| long string without double quotes | 32,293.00 (41.6%) | 49,944.00 (27.8%) | +54.7% |
+| unsafe long string without double quotes | 92,999.00 (52.0%) | 153,029.00 (32.4%) | +64.5% |
+| long string | 25,221.00 (42.8%) | 40,406.00 (34.5%) | +60.2% |
+| unsafe long string | 94,327.00 (42.5%) | 153,646.00 (31.2%) | +62.9% |
+| number | 21,539,997.00 (13.6%) | 23,542,529.00 (13.8%) | +9.3% |
+| integer | 21,351,343.00 (11.5%) | 21,040,972.00 (7.3%) | -1.5% |
+| formatted date-time | 1,462,270.00 (36.7%) | 2,185,186.00 (26.4%) | +49.4% |
+| formatted date | 1,253,869.00 (37.1%) | 1,951,066.00 (27.0%) | +55.6% |
+| formatted time | 1,293,025.00 (36.3%) | 1,959,876.00 (26.8%) | +51.6% |
+| short array of numbers | 38,841.00 (53.2%) | 72,894.00 (27.6%) | +87.7% |
+| short array of integers | 40,370.00 (59.0%) | 71,243.00 (28.1%) | +76.5% |
+| short array of short strings | 15,750.00 (51.6%) | 28,319.00 (32.1%) | +79.8% |
+| short array of long strings | 16,635.00 (47.3%) | 27,982.00 (32.2%) | +68.2% |
+| short array of objects with properties of different types | 7,843.00 (46.7%) | 13,010.00 (29.3%) | +65.9% |
+| object with number property | 16,737,937.00 (28.0%) | 23,049,405.00 (16.5%) | +37.7% |
+| object with integer property | 17,100,419.00 (24.3%) | 23,176,160.00 (19.2%) | +35.5% |
+| object with short string property | 8,558,309.00 (50.5%) | 13,368,129.00 (27.0%) | +56.2% |
+| object with long string property | 22,717.00 (44.1%) | 23,840.00 (28.4%) | +4.9% |
+| object with properties of different types | 1,759,455.00 (39.1%) | 1,777,496.00 (28.9%) | +1.0% |
+| simple object | 5,474,069.00 (43.1%) | 5,316,843.00 (29.3%) | -2.9% |
+| simple object with required fields | 5,430,015.00 (41.0%) | 5,295,904.00 (28.9%) | -2.5% |
+| oneOf external refs compile and first stringify | 285.00 (112.1%) | 203.00 (80.3%) | -28.8% |
+| object with const string property | 12,592,177.00 (37.7%) | 12,168,034.00 (33.3%) | -3.4% |
+| object with const number property | 18,509,242.00 (21.1%) | 18,614,535.00 (20.1%) | +0.6% |
+| object with const bool property | 18,523,014.00 (18.4%) | 18,045,860.00 (16.7%) | -2.6% |
+| object with const object property | 12,683,365.00 (37.0%) | 12,075,534.00 (36.6%) | -4.8% |
+| object with const null property | 18,724,021.00 (16.1%) | 18,923,425.00 (15.4%) | +1.1% |
+
+## Semantic validation and risks
+
+`npm test` passed **595 tests**, with **100% statement, branch, function, and line coverage**, plus **15 TypeScript assertions**. `npm run lint` passed. The standalone experiment check passed **552 differential output/error/access-order checks**, including nullable values, sparse arrays, unknown schemas, nested arrays/objects, union selection, coercions, getter exceptions, `toJSON`, both paths, the `json-stringify` option, and loop/flatten boundaries.
+
+Two important observable behaviors were checked explicitly:
+
+1. **Proxy length coercion:** a proxy may return an object for `length`. An unguarded four-way loop changes the number of `valueOf` calls and can serialize `[0,1,2,3,4]` where the baseline emits `[0,1]`. The measured unroll implementation includes a fallback for nonnumeric lengths; that guard was added before any unroll timing. The regression test also checks the baseline's three coercions.
+2. **Join is not semantically equivalent:** an item's `toString()` can replace `Array.prototype.join`. The baseline still emits `["x","y"]`, whereas the tested join candidate emits `[changed]`. The diagnostic asserts this counterexample in both paths, separately from the passing differential cases, and restores the original method in `finally`. Join is rejected on semantics independently of speed. The new production regression test protects the existing output.
+
+`test/array-accumulation.test.js` adds eight regression tests covering those cases, loop boundaries, and read/serialize order. Production `index.js`, `lib/serializer.js`, and `package.json` have no changes, so no experimental runtime behavior ships.
+
+Additional limitations:
+
+- The benchmark loader uses Node's internal `Module._compile` and exact source-template matching. It is an experiment tool, with a deliberate failure if either loop template changes, not a public API or runtime option.
+- Native flattening requires `--allow-natives-syntax` and is V8-specific. Fixed-interval prefix flattening has quadratic cumulative copying for a fixed item width; `concat('')` and `.length` are not alternatives that perform the same operation.
+- Local grouping and comma grouping create additional temporary strings; joining retains an array of all item strings; unrolling enlarges generated functions. The compile table captures the prototype generator's overhead as well as generated-code size.
+- Comma grouping is measured against the Local strategy using the same serialized `item`, isolating `json += comma; json += item` versus `json += comma + item`. Direct fusion of the first append expression for selected primitive schemas is a possible separate follow-up.
+- Shared-machine contention and GC cause substantial variance in several cases. A quiet-machine rerun with more samples is needed before treating the isolated positive medians as reliable improvements. The experiment establishes no blanket optimization that clears the required no-regression gate.
+
+## Reproduction
+
+Run from this branch on Node 24, using a **fresh output directory**; the driver resumes existing `.done` files. It runs variants serially and rotates order across three repetitions. The first command below runs all five strategies and baseline through the complete large-array and compilation suites; the second runs all 30 original full-suite cases for baseline and the strongest candidate.
+
+```sh
+node benchmark/run-array-accumulation.js /tmp/fjs-array-accumulation-repro
+FJS_SUITES=full FJS_VARIANTS=baseline,unroll4 node benchmark/run-array-accumulation.js /tmp/fjs-array-accumulation-repro
+node --allow-natives-syntax benchmark/probe-array-flattening.js
+node --allow-natives-syntax benchmark/check-array-accumulation.js
+npm test
+npm run lint
+```
+
+The driver invokes the actual `benchmark/bench-large-array.js`, `benchmark/bench-compile.js`, and `benchmark/bench.js` entry points with `--expose-gc --allow-natives-syntax` and the experiment preload. For an individual candidate, set `FJS_ARRAY_VARIANT` to `baseline`, `local`, `flatten`, `join`, `unroll4`, or `comma`; the standalone large-array and compilation scripts load it directly. To run the original full suite with a candidate manually, use:
+
+```sh
+FJS_ARRAY_VARIANT=unroll4 node --expose-gc --allow-natives-syntax -r ./benchmark/array-accumulation-variants.js benchmark/bench.js
+```
+
+The experiment code and completed matrix were checkpointed in commit `c3c031c` before the final full-suite results were appended. The recommendation is to retain the baseline and keep this branch as a reproducible negative experiment; any thresholded or item-specific unroll optimization should be a new experiment with a quieter benchmark window.

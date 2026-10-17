@@ -3441,11 +3441,341 @@
       "path": null,
       "size": null,
       "kind": "short string",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 19706722.0,
+      "varianceOpsSquared": 32909219910390.332,
+      "cvPercent": 34.11341763000823
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "unsafe short string",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 20437412.0,
+      "varianceOpsSquared": 35723932070024.336,
+      "cvPercent": 32.729626354034764
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "short string with double quote",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 12723947.0,
+      "varianceOpsSquared": 12443495934054.334,
+      "cvPercent": 32.02551049197811
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "long string without double quotes",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 49944.0,
+      "varianceOpsSquared": 148338885.33333334,
+      "cvPercent": 27.788342353885426
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "unsafe long string without double quotes",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 153029.0,
+      "varianceOpsSquared": 1863616041.3333333,
+      "cvPercent": 32.4077588817914
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "long string",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 40406.0,
+      "varianceOpsSquared": 141905604.33333334,
+      "cvPercent": 34.53841329987032
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "unsafe long string",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 153646.0,
+      "varianceOpsSquared": 1755831567.0,
+      "cvPercent": 31.194273654187587
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "number",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 23542529.0,
+      "varianceOpsSquared": 10542847399546.332,
+      "cvPercent": 13.795453376835235
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "integer",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 21040972.0,
+      "varianceOpsSquared": 2533619608734.3335,
+      "cvPercent": 7.323104019371142
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "formatted date-time",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 2185186.0,
+      "varianceOpsSquared": 254927375602.33334,
+      "cvPercent": 26.39553233750398
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "formatted date",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 1951066.0,
+      "varianceOpsSquared": 211063939625.3333,
+      "cvPercent": 27.004342411883815
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "formatted time",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 1959876.0,
+      "varianceOpsSquared": 210245662720.3333,
+      "cvPercent": 26.811274989092897
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "short array of numbers",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 72894.0,
+      "varianceOpsSquared": 307316743.0,
+      "cvPercent": 27.612663815683646
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "short array of integers",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 71243.0,
+      "varianceOpsSquared": 313574240.3333333,
+      "cvPercent": 28.140438549580388
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "short array of short strings",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 28319.0,
+      "varianceOpsSquared": 59485777.0,
+      "cvPercent": 32.05212282347402
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "short array of long strings",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 27982.0,
+      "varianceOpsSquared": 60372816.333333336,
+      "cvPercent": 32.245547521930376
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "short array of objects with properties of different types",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 13010.0,
+      "varianceOpsSquared": 11406162.333333334,
+      "cvPercent": 29.274496180982524
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "object with number property",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 23049405.0,
+      "varianceOpsSquared": 12150455121847.0,
+      "cvPercent": 16.548404490375155
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "object with integer property",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 23176160.0,
+      "varianceOpsSquared": 16223162818842.332,
+      "cvPercent": 19.18135351656697
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "object with short string property",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 13368129.0,
+      "varianceOpsSquared": 11351715922190.334,
+      "cvPercent": 26.97554161850818
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "object with long string property",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 23840.0,
+      "varianceOpsSquared": 59476056.333333336,
+      "cvPercent": 28.406817216474117
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "object with properties of different types",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 1777496.0,
+      "varianceOpsSquared": 358972409452.0,
+      "cvPercent": 28.86262467660859
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "simple object",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 5316843.0,
+      "varianceOpsSquared": 3471327184351.0,
+      "cvPercent": 29.33286252193399
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "simple object with required fields",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 5295904.0,
+      "varianceOpsSquared": 3215206625804.333,
+      "cvPercent": 28.898768750348587
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "oneOf external refs compile and first stringify",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 203.0,
+      "varianceOpsSquared": 87748.0,
+      "cvPercent": 80.27720570592051
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "object with const string property",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 12168034.0,
+      "varianceOpsSquared": 25050778580105.332,
+      "cvPercent": 33.27750711158308
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "object with const number property",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 18614535.0,
+      "varianceOpsSquared": 16670665565681.332,
+      "cvPercent": 20.08728016176198
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "object with const bool property",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 18045860.0,
+      "varianceOpsSquared": 10980220015891.0,
+      "cvPercent": 16.652786187546873
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "object with const object property",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 12075534.0,
+      "varianceOpsSquared": 30456707080629.0,
+      "cvPercent": 36.58429500807194
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "object with const null property",
+      "variant": "unroll4",
+      "runs": 3,
+      "medianOps": 18923425.0,
+      "varianceOpsSquared": 9254314069170.334,
+      "cvPercent": 15.364860193579407
+    },
+    {
+      "suite": "full",
+      "path": null,
+      "size": null,
+      "kind": "short string",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 20672416.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 10906777.0,
+      "varianceOpsSquared": 36172644030849.0,
+      "cvPercent": 43.7020193464861
     },
     {
       "suite": "full",
@@ -3453,10 +3783,10 @@
       "size": null,
       "kind": "unsafe short string",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 19024066.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 12326898.0,
+      "varianceOpsSquared": 18251393806603.0,
+      "cvPercent": 30.205266997445428
     },
     {
       "suite": "full",
@@ -3464,10 +3794,10 @@
       "size": null,
       "kind": "short string with double quote",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 16901461.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 8430830.0,
+      "varianceOpsSquared": 26635515443731.0,
+      "cvPercent": 47.07428242756646
     },
     {
       "suite": "full",
@@ -3475,10 +3805,10 @@
       "size": null,
       "kind": "long string without double quotes",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 59732.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 32293.0,
+      "varianceOpsSquared": 282837432.3333333,
+      "cvPercent": 41.63158179256216
     },
     {
       "suite": "full",
@@ -3486,10 +3816,10 @@
       "size": null,
       "kind": "unsafe long string without double quotes",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 200445.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 92999.0,
+      "varianceOpsSquared": 4253158569.3333335,
+      "cvPercent": 52.01666831175344
     },
     {
       "suite": "full",
@@ -3497,10 +3827,10 @@
       "size": null,
       "kind": "long string",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 49270.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 25221.0,
+      "varianceOpsSquared": 199334280.33333334,
+      "cvPercent": 42.81774120896547
     },
     {
       "suite": "full",
@@ -3508,10 +3838,10 @@
       "size": null,
       "kind": "unsafe long string",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 180166.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 94327.0,
+      "varianceOpsSquared": 2644819614.3333335,
+      "cvPercent": 42.54146493210216
     },
     {
       "suite": "full",
@@ -3519,10 +3849,10 @@
       "size": null,
       "kind": "number",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 25926784.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 21539997.0,
+      "varianceOpsSquared": 9407544108859.0,
+      "cvPercent": 13.634557647199156
     },
     {
       "suite": "full",
@@ -3530,10 +3860,10 @@
       "size": null,
       "kind": "integer",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 25584161.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 21351343.0,
+      "varianceOpsSquared": 6743592623414.333,
+      "cvPercent": 11.490984415217861
     },
     {
       "suite": "full",
@@ -3541,10 +3871,10 @@
       "size": null,
       "kind": "formatted date-time",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 2562173.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 1462270.0,
+      "varianceOpsSquared": 437067794854.3334,
+      "cvPercent": 36.720488886769175
     },
     {
       "suite": "full",
@@ -3552,10 +3882,10 @@
       "size": null,
       "kind": "formatted date",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 2268848.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 1253869.0,
+      "varianceOpsSquared": 346900786027.0,
+      "cvPercent": 37.071507304711176
     },
     {
       "suite": "full",
@@ -3563,10 +3893,10 @@
       "size": null,
       "kind": "formatted time",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 2285384.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 1293025.0,
+      "varianceOpsSquared": 341234882551.0,
+      "cvPercent": 36.25544280510359
     },
     {
       "suite": "full",
@@ -3574,10 +3904,10 @@
       "size": null,
       "kind": "short array of numbers",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 86554.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 38841.0,
+      "varianceOpsSquared": 815102612.3333333,
+      "cvPercent": 53.22256282432283
     },
     {
       "suite": "full",
@@ -3585,10 +3915,10 @@
       "size": null,
       "kind": "short array of integers",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 95414.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 40370.0,
+      "varianceOpsSquared": 1123281945.3333333,
+      "cvPercent": 58.954778648971185
     },
     {
       "suite": "full",
@@ -3596,10 +3926,10 @@
       "size": null,
       "kind": "short array of short strings",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 34663.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 15750.0,
+      "varianceOpsSquared": 125843644.33333334,
+      "cvPercent": 51.6427272856021
     },
     {
       "suite": "full",
@@ -3607,10 +3937,10 @@
       "size": null,
       "kind": "short array of long strings",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 34787.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 16635.0,
+      "varianceOpsSquared": 113266819.0,
+      "cvPercent": 47.29663373528107
     },
     {
       "suite": "full",
@@ -3618,10 +3948,10 @@
       "size": null,
       "kind": "short array of objects with properties of different types",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 15759.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 7843.0,
+      "varianceOpsSquared": 22885669.333333332,
+      "cvPercent": 46.67368250062499
     },
     {
       "suite": "full",
@@ -3629,10 +3959,10 @@
       "size": null,
       "kind": "object with number property",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 24314408.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 16737937.0,
+      "varianceOpsSquared": 26791167079729.0,
+      "cvPercent": 27.99391263404603
     },
     {
       "suite": "full",
@@ -3640,10 +3970,10 @@
       "size": null,
       "kind": "object with integer property",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 24365262.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 17100419.0,
+      "varianceOpsSquared": 21457884963529.0,
+      "cvPercent": 24.286800390371297
     },
     {
       "suite": "full",
@@ -3651,10 +3981,10 @@
       "size": null,
       "kind": "object with short string property",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 18497915.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 8558309.0,
+      "varianceOpsSquared": 34824011958689.332,
+      "cvPercent": 50.476376901594065
     },
     {
       "suite": "full",
@@ -3662,10 +3992,10 @@
       "size": null,
       "kind": "object with long string property",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 45345.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 22717.0,
+      "varianceOpsSquared": 175535756.33333334,
+      "cvPercent": 44.08884140095235
     },
     {
       "suite": "full",
@@ -3673,10 +4003,10 @@
       "size": null,
       "kind": "object with properties of different types",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 3287606.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 1759455.0,
+      "varianceOpsSquared": 784479541770.3333,
+      "cvPercent": 39.10584292276902
     },
     {
       "suite": "full",
@@ -3684,10 +4014,10 @@
       "size": null,
       "kind": "simple object",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 10541663.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 5474069.0,
+      "varianceOpsSquared": 9204341680154.332,
+      "cvPercent": 43.06714775713837
     },
     {
       "suite": "full",
@@ -3695,10 +4025,10 @@
       "size": null,
       "kind": "simple object with required fields",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 10267478.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 5430015.0,
+      "varianceOpsSquared": 8168803047276.333,
+      "cvPercent": 41.008088965039505
     },
     {
       "suite": "full",
@@ -3706,10 +4036,10 @@
       "size": null,
       "kind": "oneOf external refs compile and first stringify",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 1419.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 285.0,
+      "varianceOpsSquared": 482961.0,
+      "cvPercent": 112.08934763052754
     },
     {
       "suite": "full",
@@ -3717,10 +4047,10 @@
       "size": null,
       "kind": "object with const string property",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 22920759.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 12592177.0,
+      "varianceOpsSquared": 36249944200789.0,
+      "cvPercent": 37.70188458005637
     },
     {
       "suite": "full",
@@ -3728,10 +4058,10 @@
       "size": null,
       "kind": "object with const number property",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 24946036.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 18509242.0,
+      "varianceOpsSquared": 18099491128745.332,
+      "cvPercent": 21.14356058872853
     },
     {
       "suite": "full",
@@ -3739,10 +4069,10 @@
       "size": null,
       "kind": "object with const bool property",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 24675134.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 18523014.0,
+      "varianceOpsSquared": 14080777446000.332,
+      "cvPercent": 18.43198097687201
     },
     {
       "suite": "full",
@@ -3750,10 +4080,10 @@
       "size": null,
       "kind": "object with const object property",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 22861584.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 12683365.0,
+      "varianceOpsSquared": 35183841542894.332,
+      "cvPercent": 37.04184766161779
     },
     {
       "suite": "full",
@@ -3761,10 +4091,10 @@
       "size": null,
       "kind": "object with const null property",
       "variant": "baseline",
-      "runs": 1,
-      "medianOps": 24274423.0,
-      "varianceOpsSquared": null,
-      "cvPercent": 0
+      "runs": 3,
+      "medianOps": 18724021.0,
+      "varianceOpsSquared": 10909893134921.332,
+      "cvPercent": 16.139724961737688
     }
   ],
   "measurements": [
@@ -12482,6 +12812,276 @@
     },
     {
       "kind": "short string",
+      "hz": 19706722.0,
+      "rme": 0.58,
+      "samples": 17051227,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "unsafe short string",
+      "hz": 22845828.0,
+      "rme": 0.09,
+      "samples": 21584759,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "short string with double quote",
+      "hz": 13362125.0,
+      "rme": 6.15,
+      "samples": 10791594,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "long string without double quotes",
+      "hz": 51740.0,
+      "rme": 0.29,
+      "samples": 49849,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "unsafe long string without double quotes",
+      "hz": 153029.0,
+      "rme": 1.65,
+      "samples": 143901,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "long string",
+      "hz": 40406.0,
+      "rme": 2.07,
+      "samples": 36925,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "unsafe long string",
+      "hz": 153646.0,
+      "rme": 1.78,
+      "samples": 147833,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "number",
+      "hz": 23542529.0,
+      "rme": 10.81,
+      "samples": 22634095,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "integer",
+      "hz": 23556818.0,
+      "rme": 8.59,
+      "samples": 22856878,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "formatted date-time",
+      "hz": 2185186.0,
+      "rme": 4.3,
+      "samples": 1847639,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "formatted date",
+      "hz": 1981670.0,
+      "rme": 2.68,
+      "samples": 1808257,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "formatted time",
+      "hz": 1959876.0,
+      "rme": 0.73,
+      "samples": 1867694,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "short array of numbers",
+      "hz": 74306.0,
+      "rme": 5.21,
+      "samples": 56725,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "short array of integers",
+      "hz": 71243.0,
+      "rme": 4.83,
+      "samples": 57394,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "short array of short strings",
+      "hz": 28319.0,
+      "rme": 4.7,
+      "samples": 24724,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "short array of long strings",
+      "hz": 27982.0,
+      "rme": 6.38,
+      "samples": 24068,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "short array of objects with properties of different types",
+      "hz": 13010.0,
+      "rme": 6.3,
+      "samples": 9982,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "object with number property",
+      "hz": 23049405.0,
+      "rme": 1.33,
+      "samples": 21671156,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "object with integer property",
+      "hz": 23176160.0,
+      "rme": 7.91,
+      "samples": 18149630,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "object with short string property",
+      "hz": 15333128.0,
+      "rme": 15.77,
+      "samples": 7384469,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "object with long string property",
+      "hz": 35963.0,
+      "rme": 10.82,
+      "samples": 23742,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "object with properties of different types",
+      "hz": 2765586.0,
+      "rme": 10.28,
+      "samples": 1584603,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "simple object",
+      "hz": 8502620.0,
+      "rme": 7.62,
+      "samples": 6848735,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "simple object with required fields",
+      "hz": 8270305.0,
+      "rme": 20.0,
+      "samples": 3964077,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "oneOf external refs compile and first stringify",
+      "hz": 711.0,
+      "rme": 20.53,
+      "samples": 331,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "object with const string property",
+      "hz": 20819744.0,
+      "rme": 10.83,
+      "samples": 13562422,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "object with const number property",
+      "hz": 24986367.0,
+      "rme": 0.95,
+      "samples": 29218764,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "object with const bool property",
+      "hz": 23724052.0,
+      "rme": 1.43,
+      "samples": 24249025,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "object with const object property",
+      "hz": 21454356.0,
+      "rme": 0.67,
+      "samples": 18547693,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "object with const null property",
+      "hz": 23182874.0,
+      "rme": 12.05,
+      "samples": 16330853,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 1
+    },
+    {
+      "kind": "short string",
       "hz": 20672416.0,
       "rme": 1.31,
       "samples": 17890312,
@@ -13903,6 +14503,1086 @@
       "run": 2
     },
     {
+      "kind": "short string",
+      "hz": 20533037.0,
+      "rme": 0.06,
+      "samples": 18396318,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "unsafe short string",
+      "hz": 20437412.0,
+      "rme": 0.59,
+      "samples": 17704617,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "short string with double quote",
+      "hz": 12723947.0,
+      "rme": 2.19,
+      "samples": 10941002,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "long string without double quotes",
+      "hz": 49944.0,
+      "rme": 4.01,
+      "samples": 42918,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "unsafe long string without double quotes",
+      "hz": 162907.0,
+      "rme": 4.95,
+      "samples": 149154,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "long string",
+      "hz": 42287.0,
+      "rme": 1.53,
+      "samples": 37610,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "unsafe long string",
+      "hz": 163087.0,
+      "rme": 0.66,
+      "samples": 155683,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "number",
+      "hz": 26780546.0,
+      "rme": 0.16,
+      "samples": 33353995,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "integer",
+      "hz": 21040972.0,
+      "rme": 20.29,
+      "samples": 15109309,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "formatted date-time",
+      "hz": 2223088.0,
+      "rme": 13.25,
+      "samples": 1370945,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "formatted date",
+      "hz": 1951066.0,
+      "rme": 2.96,
+      "samples": 1736404,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "formatted time",
+      "hz": 1989697.0,
+      "rme": 0.51,
+      "samples": 1911785,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "short array of numbers",
+      "hz": 72894.0,
+      "rme": 1.53,
+      "samples": 63884,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "short array of integers",
+      "hz": 74947.0,
+      "rme": 3.81,
+      "samples": 67005,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "short array of short strings",
+      "hz": 28710.0,
+      "rme": 1.5,
+      "samples": 26430,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "short array of long strings",
+      "hz": 29157.0,
+      "rme": 1.42,
+      "samples": 26932,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "short array of objects with properties of different types",
+      "hz": 13927.0,
+      "rme": 4.86,
+      "samples": 12013,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "object with number property",
+      "hz": 23103404.0,
+      "rme": 9.75,
+      "samples": 17750005,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "object with integer property",
+      "hz": 23468697.0,
+      "rme": 0.45,
+      "samples": 23175101,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "object with short string property",
+      "hz": 13368129.0,
+      "rme": 19.41,
+      "samples": 6469281,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "object with long string property",
+      "hz": 23840.0,
+      "rme": 33.23,
+      "samples": 10225,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "object with properties of different types",
+      "hz": 1777496.0,
+      "rme": 20.21,
+      "samples": 572794,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "simple object",
+      "hz": 5316843.0,
+      "rme": 16.26,
+      "samples": 2497046,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "simple object with required fields",
+      "hz": 5048076.0,
+      "rme": 20.8,
+      "samples": 1418032,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "oneOf external refs compile and first stringify",
+      "hz": 193.0,
+      "rme": 52.12,
+      "samples": 69,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "object with const string property",
+      "hz": 12133468.0,
+      "rme": 20.07,
+      "samples": 3642219,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "object with const number property",
+      "hz": 18614535.0,
+      "rme": 22.31,
+      "samples": 3083059,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "object with const bool property",
+      "hz": 17925351.0,
+      "rme": 17.9,
+      "samples": 3279373,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "object with const object property",
+      "hz": 11725263.0,
+      "rme": 16.39,
+      "samples": 2443878,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "object with const null property",
+      "hz": 17290735.0,
+      "rme": 21.95,
+      "samples": 2766691,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 2
+    },
+    {
+      "kind": "short string",
+      "hz": 10906777.0,
+      "rme": 25.49,
+      "samples": 1716784,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "unsafe short string",
+      "hz": 12326898.0,
+      "rme": 25.65,
+      "samples": 1487205,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "short string with double quote",
+      "hz": 8430830.0,
+      "rme": 23.42,
+      "samples": 1308370,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "long string without double quotes",
+      "hz": 32293.0,
+      "rme": 29.31,
+      "samples": 7527,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "unsafe long string without double quotes",
+      "hz": 92999.0,
+      "rme": 26.07,
+      "samples": 18429,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "long string",
+      "hz": 24430.0,
+      "rme": 24.5,
+      "samples": 5383,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "unsafe long string",
+      "hz": 88173.0,
+      "rme": 24.92,
+      "samples": 13071,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "number",
+      "hz": 21539997.0,
+      "rme": 23.96,
+      "samples": 3763948,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "integer",
+      "hz": 21351343.0,
+      "rme": 18.8,
+      "samples": 4646816,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "formatted date-time",
+      "hz": 1376719.0,
+      "rme": 22.9,
+      "samples": 177172,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "formatted date",
+      "hz": 1243608.0,
+      "rme": 25.4,
+      "samples": 226484,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "formatted time",
+      "hz": 1255236.0,
+      "rme": 18.56,
+      "samples": 237133,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "short array of numbers",
+      "hz": 35533.0,
+      "rme": 25.17,
+      "samples": 9271,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "short array of integers",
+      "hz": 34764.0,
+      "rme": 22.6,
+      "samples": 7811,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "short array of short strings",
+      "hz": 14754.0,
+      "rme": 31.22,
+      "samples": 2388,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "short array of long strings",
+      "hz": 16084.0,
+      "rme": 26.76,
+      "samples": 3016,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "short array of objects with properties of different types",
+      "hz": 7147.0,
+      "rme": 19.16,
+      "samples": 1896,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "object with number property",
+      "hz": 14417055.0,
+      "rme": 15.94,
+      "samples": 2462391,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "object with integer property",
+      "hz": 15753865.0,
+      "rme": 16.31,
+      "samples": 2620918,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "object with short string property",
+      "hz": 8016741.0,
+      "rme": 23.47,
+      "samples": 2075396,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "object with long string property",
+      "hz": 22717.0,
+      "rme": 11.18,
+      "samples": 11249,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "object with properties of different types",
+      "hz": 1759455.0,
+      "rme": 16.57,
+      "samples": 556924,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "simple object",
+      "hz": 5117772.0,
+      "rme": 19.16,
+      "samples": 1772234,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "simple object with required fields",
+      "hz": 5211395.0,
+      "rme": 18.88,
+      "samples": 1906783,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "oneOf external refs compile and first stringify",
+      "hz": 285.0,
+      "rme": 27.37,
+      "samples": 137,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "object with const string property",
+      "hz": 12395486.0,
+      "rme": 8.74,
+      "samples": 7508601,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "object with const number property",
+      "hz": 18509242.0,
+      "rme": 27.27,
+      "samples": 3995070,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "object with const bool property",
+      "hz": 18523014.0,
+      "rme": 16.71,
+      "samples": 5640745,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "object with const object property",
+      "hz": 12683365.0,
+      "rme": 19.07,
+      "samples": 2033589,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "object with const null property",
+      "hz": 18724021.0,
+      "rme": 23.08,
+      "samples": 1820108,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 3
+    },
+    {
+      "kind": "short string",
+      "hz": 9707479.0,
+      "rme": 20.35,
+      "samples": 2875324,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "unsafe short string",
+      "hz": 11080361.0,
+      "rme": 13.64,
+      "samples": 5543883,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "short string with double quote",
+      "hz": 7558029.0,
+      "rme": 12.6,
+      "samples": 3406511,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "long string without double quotes",
+      "hz": 29165.0,
+      "rme": 20.28,
+      "samples": 10398,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "unsafe long string without double quotes",
+      "hz": 82683.0,
+      "rme": 30.74,
+      "samples": 16433,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "long string",
+      "hz": 25221.0,
+      "rme": 25.38,
+      "samples": 7292,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "unsafe long string",
+      "hz": 94327.0,
+      "rme": 21.56,
+      "samples": 27048,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "number",
+      "hz": 20019941.0,
+      "rme": 24.85,
+      "samples": 3872643,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "integer",
+      "hz": 20861372.0,
+      "rme": 19.89,
+      "samples": 4014231,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "formatted date-time",
+      "hz": 1462270.0,
+      "rme": 35.49,
+      "samples": 170071,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "formatted date",
+      "hz": 1253869.0,
+      "rme": 18.21,
+      "samples": 233248,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "formatted time",
+      "hz": 1293025.0,
+      "rme": 39.88,
+      "samples": 159441,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "short array of numbers",
+      "hz": 38841.0,
+      "rme": 31.47,
+      "samples": 6691,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "short array of integers",
+      "hz": 40370.0,
+      "rme": 22.11,
+      "samples": 7790,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "short array of short strings",
+      "hz": 15750.0,
+      "rme": 21.82,
+      "samples": 3202,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "short array of long strings",
+      "hz": 16635.0,
+      "rme": 24.17,
+      "samples": 5540,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "short array of objects with properties of different types",
+      "hz": 7843.0,
+      "rme": 20.53,
+      "samples": 2158,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "object with number property",
+      "hz": 16737937.0,
+      "rme": 26.47,
+      "samples": 2829752,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "object with integer property",
+      "hz": 17100419.0,
+      "rme": 20.39,
+      "samples": 2773038,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "object with short string property",
+      "hz": 8558309.0,
+      "rme": 20.13,
+      "samples": 1543253,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "object with long string property",
+      "hz": 22090.0,
+      "rme": 22.15,
+      "samples": 4822,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "object with properties of different types",
+      "hz": 1747641.0,
+      "rme": 38.04,
+      "samples": 455009,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "simple object",
+      "hz": 5474069.0,
+      "rme": 22.81,
+      "samples": 1334426,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "simple object with required fields",
+      "hz": 5430015.0,
+      "rme": 29.48,
+      "samples": 861411,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "oneOf external refs compile and first stringify",
+      "hz": 156.0,
+      "rme": 28.52,
+      "samples": 64,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "object with const string property",
+      "hz": 12592177.0,
+      "rme": 21.28,
+      "samples": 2019050,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "object with const number property",
+      "hz": 16908486.0,
+      "rme": 18.66,
+      "samples": 2524039,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "object with const bool property",
+      "hz": 17876723.0,
+      "rme": 19.2,
+      "samples": 2819898,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "object with const object property",
+      "hz": 12494746.0,
+      "rme": 25.39,
+      "samples": 2226040,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "object with const null property",
+      "hz": 18396891.0,
+      "rme": 29.6,
+      "samples": 2374422,
+      "suite": "full",
+      "variant": "baseline",
+      "run": 2
+    },
+    {
+      "kind": "short string",
+      "hz": 10209503.0,
+      "rme": 14.72,
+      "samples": 3380155,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "unsafe short string",
+      "hz": 11501529.0,
+      "rme": 25.26,
+      "samples": 2323561,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "short string with double quote",
+      "hz": 6958216.0,
+      "rme": 22.36,
+      "samples": 1647344,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "long string without double quotes",
+      "hz": 29804.0,
+      "rme": 19.63,
+      "samples": 6628,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "unsafe long string without double quotes",
+      "hz": 83687.0,
+      "rme": 21.15,
+      "samples": 25367,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "long string",
+      "hz": 20778.0,
+      "rme": 23.37,
+      "samples": 4243,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "unsafe long string",
+      "hz": 86251.0,
+      "rme": 26.94,
+      "samples": 16796,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "number",
+      "hz": 20286604.0,
+      "rme": 19.11,
+      "samples": 4074842,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "integer",
+      "hz": 20609591.0,
+      "rme": 15.77,
+      "samples": 4902703,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "formatted date-time",
+      "hz": 1330235.0,
+      "rme": 21.15,
+      "samples": 234554,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "formatted date",
+      "hz": 1171076.0,
+      "rme": 42.82,
+      "samples": 200819,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "formatted time",
+      "hz": 1181017.0,
+      "rme": 30.24,
+      "samples": 71053,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "short array of numbers",
+      "hz": 43261.0,
+      "rme": 37.47,
+      "samples": 5633,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "short array of integers",
+      "hz": 42592.0,
+      "rme": 30.15,
+      "samples": 3356,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "short array of short strings",
+      "hz": 15160.0,
+      "rme": 24.9,
+      "samples": 1653,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "short array of long strings",
+      "hz": 15150.0,
+      "rme": 24.92,
+      "samples": 1310,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "short array of objects with properties of different types",
+      "hz": 7673.0,
+      "rme": 17.3,
+      "samples": 2564,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "object with number property",
+      "hz": 17039089.0,
+      "rme": 17.77,
+      "samples": 5160003,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "object with integer property",
+      "hz": 16350678.0,
+      "rme": 15.59,
+      "samples": 7352318,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "object with short string property",
+      "hz": 8768583.0,
+      "rme": 16.26,
+      "samples": 2937910,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "object with long string property",
+      "hz": 21643.0,
+      "rme": 22.91,
+      "samples": 5289,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "object with properties of different types",
+      "hz": 1684450.0,
+      "rme": 16.51,
+      "samples": 592304,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "simple object",
+      "hz": 5235784.0,
+      "rme": 18.09,
+      "samples": 1721065,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "simple object with required fields",
+      "hz": 5295904.0,
+      "rme": 17.72,
+      "samples": 1957532,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "oneOf external refs compile and first stringify",
+      "hz": 203.0,
+      "rme": 36.15,
+      "samples": 73,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "object with const string property",
+      "hz": 12168034.0,
+      "rme": 22.33,
+      "samples": 2835012,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "object with const number property",
+      "hz": 17377577.0,
+      "rme": 20.09,
+      "samples": 3362170,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "object with const bool property",
+      "hz": 18045860.0,
+      "rme": 17.18,
+      "samples": 3678949,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "object with const object property",
+      "hz": 12075534.0,
+      "rme": 24.06,
+      "samples": 2306188,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
+      "kind": "object with const null property",
+      "hz": 18923425.0,
+      "rme": 32.43,
+      "samples": 2668467,
+      "suite": "full",
+      "variant": "unroll4",
+      "run": 3
+    },
+    {
       "variant": "flatten",
       "path": "inline",
       "size": 1000,
@@ -15054,5 +16734,10 @@
       "suite": "large",
       "run": 3
     }
-  ]
+  ],
+  "dateUtc": "2026-10-17",
+  "platform": "darwin/arm64",
+  "tinybench": "6.2.1",
+  "flattenInterval": 8192,
+  "fullSuiteCandidate": "unroll4"
 }
