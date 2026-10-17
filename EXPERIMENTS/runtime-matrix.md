@@ -36,22 +36,27 @@ numeric kinds alike.
 Verification probe on Node 20 after the change (output consumed, harness distributions,
 2 runs each): integer and number neutral (−1.8% … +2.8%) at 1e3 and 2e4; +29–48% at 1e5.
 
-## Per-runtime headline results (3 rounds, 3 containers concurrently so CV is 5–17%; see
-`container-results.md` for the low-noise Node 24 run)
+## Per-runtime headline results (final cutoffs; one container at a time, 3 rounds for
+Node 20/22, 5 rounds for Node 24 — see `container-results.md`)
 
 | Case | Node 24 | Node 22 | Node 20 |
 | --- | ---: | ---: | ---: |
-| build() tiny | +1011% | +1567% | +1473% |
-| build() deep | +106% | +75% | +114% |
-| build() refs | +17% | +35% | +26% |
-| 1e6 integer | +60% | +390% | +218% |
-| 1e6 number | +231% | +266% | +72% |
-| 1e6 short-string | +364% | +389% | +323% |
-| 1e6 long-string | +60% | +102% | +109% |
-| 1e3 integer | +26% | +26% | +2% |
-| 1e3 number | +98% | +95% | +31%* |
+| build() tiny | +912% | +1288% | +1364% |
+| build() deep | +102% | +73% | +93% |
+| build() refs | +23% | +25% | +32% |
+| 1e6 integer | +58% | +375% | +172% |
+| 1e6 number | +168% | +268% | +81% |
+| 1e6 short-string | +374% | +453% | +299% |
+| 1e6 long-string | +66% | +95% | +139% |
+| 1e3 integer | +30% | +27% | +1.5% (cutoff 1e5) |
+| 1e3 number | +93% | +93% | +4% (cutoff 1e5) |
+| bench.js short array of numbers / integers | +32% / +35% | +64% / +83% | ±0% |
 
-\* Node 20 1e3 number row predates the 1e5 cutoff; it is now neutral by design.
+Borderline rows (≤ −2%, CV < 4%) after the fix: Node 20 `integer / 2e4` −5.1% (classic loop
+now sits in a larger generated function with the dormant fast-path branch); Node 22 scalar
+`integer` −4.2% and `number` −2.7%, Node 20 `object with short string property` −4.5% — these
+schemas generate byte-identical code on both sides, so they reflect process-layout/JIT variance
+(the same rows are within ±1% in the 5-round Node 24 run).
 
 Bun 1.4 (JavaScriptCore, host, noisy): 1e6 number +250%, short-string +64%, integer +44%;
 build() tiny +861%, refs +42%. Direction matches V8; magnitudes are not comparable.
