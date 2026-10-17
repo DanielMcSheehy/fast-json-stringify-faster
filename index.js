@@ -109,10 +109,15 @@ function assertObjectDepth (schema, maxDepth, name) {
     stack.push({ value, depth: entry.depth, exit: true })
 
     for (const key in value) {
-      if (key === '$ref' && typeof value[key] === 'string') {
+      const child = value[key]
+      if (key === '$ref' && typeof child === 'string') {
         hasRef = true
       }
-      stack.push({ value: value[key], depth: entry.depth + 1, exit: false })
+      // Primitive values cannot contain cycles or contribute object depth.
+      // Avoid allocating stack entries that the next iteration would discard.
+      if (typeof child === 'object' && child !== null) {
+        stack.push({ value: child, depth: entry.depth + 1, exit: false })
+      }
     }
   }
 
