@@ -16,15 +16,17 @@ const NAMED_FRAGMENT_REF = /^#[a-z_][-\w._]*$/i
 // Minimum array lengths at which copying into a null-prototype array and
 // calling native JSON.stringify beats the generated per-item loop, measured
 // with the output consumed (flattened) as a socket write would
-// (EXPERIMENTS/runtime-matrix.md). Numbers win from ~100 elements on every
-// runtime because native float formatting beats per-item ToString. Integers
-// render through V8's small-int string cache, so the copy only pays off from
-// ~512 elements on V8 >= 12.4 (Node 22) and ~4096 on Node 20. Booleans never
-// win and keep the loop. Array lookup instead of a ternary keeps this fully
-// covered on every Node.
+// (EXPERIMENTS/runtime-matrix.md). On V8 >= 12.4 (Node 22) numbers win from
+// ~100 elements because native float formatting beats per-item ToString,
+// and integers from ~512 because small-int ToString is cached. Node 20's
+// JSON.stringify lacks the fast integer-array path and loses 15-25% up to
+// ~1e5 elements for integers and integer-valued numbers, so both kinds wait
+// for 1e5 there. Booleans never win and keep the loop. Array lookup instead
+// of a ternary keeps this fully covered on every Node.
 const nodeMajor = Number.parseInt(process.versions.node, 10)
-const INTEGER_ARRAY_FAST_PATH = { condition: 'Number.isInteger(v)', minLength: [4096, 512][+(nodeMajor >= 22)] }
-const NUMBER_ARRAY_FAST_PATH = { condition: 'typeof v === \'number\' && v === v', minLength: 32 }
+const PRIMITIVE_FAST_PATH_MIN_LENGTH = [{ integer: 1e5, number: 1e5 }, { integer: 512, number: 32 }][+(nodeMajor >= 22)]
+const INTEGER_ARRAY_FAST_PATH = { condition: 'Number.isInteger(v)', minLength: PRIMITIVE_FAST_PATH_MIN_LENGTH.integer }
+const NUMBER_ARRAY_FAST_PATH = { condition: 'typeof v === \'number\' && v === v', minLength: PRIMITIVE_FAST_PATH_MIN_LENGTH.number }
 
 const singleSchemaKeywords = [
   'additionalItems',

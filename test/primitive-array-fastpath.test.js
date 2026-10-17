@@ -193,7 +193,7 @@ test('excluded item schemas keep the classic path', (t) => {
 })
 
 // The copy-then-stringify path only engages above a per-kind length cutoff
-// (number >= 32, integer >= 512 on Node >= 22 / 4096 on Node 20; boolean
+// (Node >= 22: number >= 32, integer >= 512; Node 20: both >= 1e5; boolean
 // never). Exercise each kind on both sides of its cutoff with a miss in the
 // middle, so the prefix/resume code runs for every kind on every runtime.
 test('guard misses above and below each kind cutoff match the serializer', (t) => {
@@ -203,8 +203,9 @@ test('guard misses above and below each kind cutoff match the serializer', (t) =
     ['integer', 512, 7, 1.5, 1],
     ['integer', 511, 7, 1.5, 1],
     ['integer', 600, 7, 10n, 10],
-    ['integer', 4095, 7, 1.5, 1],
-    ['integer', 4096, 7, 10n, 10],
+    ['integer', 99999, 7, 1.5, 1],
+    ['integer', 100000, 7, 10n, 10],
+    ['number', 100000, 1.5, '2', 2],
     ['boolean', 1000, true, 0, false]
   ]
   t.plan(cases.length * 3)
