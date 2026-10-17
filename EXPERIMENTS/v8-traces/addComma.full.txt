@@ -1,0 +1,162 @@
+[marking 0x1788d5fc6571 <JSFunction isPosixPathSeparator <node:path> (sfi = 0x250355a92c71)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x1788d5fc6571 <JSFunction isPosixPathSeparator <node:path> (sfi = 0x250355a92c71)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[completed compiling 0x1788d5fc6571 <JSFunction isPosixPathSeparator <node:path> (sfi = 0x250355a92c71)> (target MAGLEV) - took 0.000, 0.208, 0.000 ms]
+[marking 0x1788d5fc6699 <JSFunction normalizeString <node:path> (sfi = 0x250355a92eb1)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x1788d5fc6699 <JSFunction normalizeString <node:path> (sfi = 0x250355a92eb1)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[completed compiling 0x1788d5fc6699 <JSFunction normalizeString <node:path> (sfi = 0x250355a92eb1)> (target MAGLEV) - took 0.000, 0.416, 0.000 ms]
+[marking 0x152163d3d3d1 <JSFunction <node:internal/modules/cjs/loader> (sfi = 0x264063e0e1f1)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x152163d3d3d1 <JSFunction <node:internal/modules/cjs/loader> (sfi = 0x264063e0e1f1)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[completed compiling 0x152163d3d3d1 <JSFunction <node:internal/modules/cjs/loader> (sfi = 0x264063e0e1f1)> (target MAGLEV) - took 0.000, 0.250, 0.000 ms]
+[bailout (kind: deopt-eager, reason: Insufficient type feedback for binary operation): begin. deoptimizing 0x1788d5fc6699 <JSFunction normalizeString <node:path> (sfi = 0x250355a92eb1)>, 0x1156e89c2449 <Code MAGLEV>, opt id 1, bytecode offset 90, deopt exit 26, FP to SP delta 128, caller SP 0x00016f0c17e8, pc 0x000124d00dfc]
+[marking 0x1788d5fc6699 <JSFunction normalizeString <node:path> (sfi = 0x250355a92eb1)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x1788d5fc6699 <JSFunction normalizeString <node:path> (sfi = 0x250355a92eb1)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[marking 0x020f5c781749 <JSFunction <node:internal/validators> (sfi = 0x22d734adb2e1)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x020f5c781749 <JSFunction <node:internal/validators> (sfi = 0x22d734adb2e1)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[completed compiling 0x020f5c781749 <JSFunction <node:internal/validators> (sfi = 0x22d734adb2e1)> (target MAGLEV) - took 0.000, 0.042, 0.000 ms]
+[completed compiling 0x1788d5fc6699 <JSFunction normalizeString <node:path> (sfi = 0x250355a92eb1)> (target MAGLEV) - took 0.000, 0.334, 0.000 ms]
+[marking 0x35bf51047b51 <JSFunction isFileType <node:fs> (sfi = 0x250355aa3e61)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x35bf51047b51 <JSFunction isFileType <node:fs> (sfi = 0x250355aa3e61)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[completed compiling 0x35bf51047b51 <JSFunction isFileType <node:fs> (sfi = 0x250355aa3e61)> (target MAGLEV) - took 0.000, 0.125, 0.000 ms]
+[marking 0x1788d5fc6d31 <JSFunction dirname <node:path> (sfi = 0x250355a94219)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x1788d5fc6d31 <JSFunction dirname <node:path> (sfi = 0x250355a94219)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[completed compiling 0x1788d5fc6d31 <JSFunction dirname <node:path> (sfi = 0x250355a94219)> (target MAGLEV) - took 0.000, 0.833, 0.000 ms]
+[marking 0x35bf51048391 <JSFunction nextPart <node:fs> (sfi = 0x250355aaaf79)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x35bf51048391 <JSFunction nextPart <node:fs> (sfi = 0x250355aaaf79)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[completed compiling 0x35bf51048391 <JSFunction nextPart <node:fs> (sfi = 0x250355aaaf79)> (target MAGLEV) - took 0.000, 0.042, 0.000 ms]
+[marking 0x152163d19ce9 <JSFunction get hasSubscribers <node:diagnostics_channel> (sfi = 0x250355a896b1)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x152163d19ce9 <JSFunction get hasSubscribers <node:diagnostics_channel> (sfi = 0x250355a896b1)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[completed compiling 0x152163d19ce9 <JSFunction get hasSubscribers <node:diagnostics_channel> (sfi = 0x250355a896b1)> (target MAGLEV) - took 0.000, 0.042, 0.000 ms]
+[marking 0x1788d5fc6699 <JSFunction normalizeString <node:path> (sfi = 0x250355a92eb1)> for optimization to TURBOFAN_JS, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x1788d5fc6699 <JSFunction normalizeString <node:path> (sfi = 0x250355a92eb1)> (target TURBOFAN_JS), mode: ConcurrencyMode::kConcurrent]
+Cannot consider 0x7494835b8 {0x3134ef8897a9 <FeedbackCell[many closures]>} for inlining (no feedback vector)
+Cannot consider 0x7494835b8 {0x3134ef8897a9 <FeedbackCell[many closures]>} for inlining (no feedback vector)
+Considering 0x749482718 {0x250355a92c71 <SharedFunctionInfo isPosixPathSeparator>} for inlining with 0x749483d98 {0x020f5c7a0b19 <FeedbackVector[1]>}
+Inlining small function(s) at call site #84:JSCall
+Inlining 0x749482718 {0x250355a92c71 <SharedFunctionInfo isPosixPathSeparator>} into 0x7494822c8 {0x250355a92eb1 <SharedFunctionInfo normalizeString>}
+Considering 0x749482718 {0x250355a92c71 <SharedFunctionInfo isPosixPathSeparator>} for inlining with 0x749483d98 {0x020f5c7a0b19 <FeedbackVector[1]>}
+Inlining small function(s) at call site #119:JSCall
+Inlining 0x749482718 {0x250355a92c71 <SharedFunctionInfo isPosixPathSeparator>} into 0x7494822c8 {0x250355a92eb1 <SharedFunctionInfo normalizeString>}
+Cannot consider 0x7494835b8 {0x3134ef8897a9 <FeedbackCell[many closures]>} for inlining (no feedback vector)
+[marking 0x152163d092f1 <JSFunction noop <node:internal/util/debuglog> (sfi = 0x22d734aecfb9)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x152163d092f1 <JSFunction noop <node:internal/util/debuglog> (sfi = 0x22d734aecfb9)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[marking 0x152163d3ab09 <JSFunction <node:internal/util> (sfi = 0x22d734ae1399)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x152163d3c0b1 <JSFunction <node:internal/util> (sfi = 0x22d734ae1399)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[completed compiling 0x152163d092f1 <JSFunction noop <node:internal/util/debuglog> (sfi = 0x22d734aecfb9)> (target MAGLEV) - took 0.000, 0.042, 0.000 ms]
+[completed compiling 0x152163d3c0b1 <JSFunction <node:internal/util> (sfi = 0x22d734ae1399)> (target MAGLEV) - took 0.000, 0.042, 0.000 ms]
+[marking 0x35bf51065891 <JSFunction wrappedFn <node:internal/errors> (sfi = 0x22d734ad0439)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x020f5c7816e1 <JSFunction wrappedFn <node:internal/errors> (sfi = 0x22d734ad0439)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[completed compiling 0x020f5c7816e1 <JSFunction wrappedFn <node:internal/errors> (sfi = 0x22d734ad0439)> (target MAGLEV) - took 0.000, 0.083, 0.000 ms]
+[marking 0x152163d05a51 <JSFunction assert <node:internal/assert> (sfi = 0x22d734ad4839)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x152163d05a51 <JSFunction assert <node:internal/assert> (sfi = 0x22d734ad4839)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[completed compiling 0x152163d05a51 <JSFunction assert <node:internal/assert> (sfi = 0x22d734ad4839)> (target MAGLEV) - took 0.000, 0.083, 0.000 ms]
+[marking 0x35bf5106b8c9 <JSFunction realpathSync <node:fs> (sfi = 0x250355aab039)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x35bf5106b8c9 <JSFunction realpathSync <node:fs> (sfi = 0x250355aab039)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[completed compiling 0x1788d5fc6699 <JSFunction normalizeString <node:path> (sfi = 0x250355a92eb1)> (target TURBOFAN_JS) - took 0.000, 4.167, 0.000 ms]
+[completed optimizing 0x1788d5fc6699 <JSFunction normalizeString <node:path> (sfi = 0x250355a92eb1)> (target TURBOFAN_JS)]
+[completed compiling 0x35bf5106b8c9 <JSFunction realpathSync <node:fs> (sfi = 0x250355aab039)> (target MAGLEV) - took 0.000, 0.583, 0.000 ms]
+[marking 0x1788d5fc6f11 <JSFunction resolve <node:path> (sfi = 0x250355a93d59)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x1788d5fc6f11 <JSFunction resolve <node:path> (sfi = 0x250355a93d59)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[completed compiling 0x1788d5fc6f11 <JSFunction resolve <node:path> (sfi = 0x250355a93d59)> (target MAGLEV) - took 0.000, 0.333, 0.000 ms]
+[marking 0x1788d5fc6d81 <JSFunction toNamespacedPath <node:path> (sfi = 0x250355a94171)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x1788d5fc6d81 <JSFunction toNamespacedPath <node:path> (sfi = 0x250355a94171)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[completed compiling 0x1788d5fc6d81 <JSFunction toNamespacedPath <node:path> (sfi = 0x250355a94171)> (target MAGLEV) - took 0.000, 0.042, 0.000 ms]
+[marking 0x2bf336dceda9 <JSFunction </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/benchmark/trace-loop-v8.js> (sfi = 0x20f5c7a3291)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x2bf336dceda9 <JSFunction </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/benchmark/trace-loop-v8.js> (sfi = 0x20f5c7a3291)> (target MAGLEV) OSR, mode: ConcurrencyMode::kConcurrent]
+[completed compiling 0x2bf336dceda9 <JSFunction </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/benchmark/trace-loop-v8.js> (sfi = 0x20f5c7a3291)> (target MAGLEV) OSR - took 0.000, 0.208, 0.000 ms]
+[compiling method 0x2bf336dceda9 <JSFunction </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/benchmark/trace-loop-v8.js> (sfi = 0x20f5c7a3291)> (target TURBOFAN_JS) OSR, mode: ConcurrencyMode::kConcurrent]
+[completed compiling 0x2bf336dceda9 <JSFunction </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/benchmark/trace-loop-v8.js> (sfi = 0x20f5c7a3291)> (target TURBOFAN_JS) OSR - took 0.000, 3.250, 0.042 ms]
+[completed optimizing 0x2bf336dceda9 <JSFunction </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/benchmark/trace-loop-v8.js> (sfi = 0x20f5c7a3291)> (target TURBOFAN_JS) OSR]
+[bailout (kind: deopt-eager, reason: prepare for on stack replacement (OSR)): begin. deoptimizing 0x2bf336dceda9 <JSFunction </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/benchmark/trace-loop-v8.js> (sfi = 0x20f5c7a3291)>, 0x1ac01cb84f29 <Code MAGLEV>, opt id 17, bytecode offset 84, deopt exit 12, FP to SP delta 144, caller SP 0x00016f0c4840, pc 0x000124cdf964]
+[bailout (kind: deopt-eager, reason: Insufficient type feedback for call): begin. deoptimizing 0x2bf336dceda9 <JSFunction </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/benchmark/trace-loop-v8.js> (sfi = 0x20f5c7a3291)>, 0x28ba33be5259 <Code TURBOFAN_JS>, opt id 18, bytecode offset 96, deopt exit 9, FP to SP delta 192, caller SP 0x00016f0c4840, pc 0x000124cdfdd0]
+[marking 0x2bf336df61c1 <JSFunction asString </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/lib/serializer.js> (sfi = 0x20f5c7aea19)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x2bf336df61c1 <JSFunction asString </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/lib/serializer.js> (sfi = 0x20f5c7aea19)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[marking 0x2bf336df6351 <JSFunction asString </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/lib/serializer.js> (sfi = 0x20f5c7af079)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[marking 0x2bf336df6239 <JSFunction asNumber </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/lib/serializer.js> (sfi = 0x20f5c7aee89)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[marking 0x2bf336df6271 <JSFunction asBoolean </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/lib/serializer.js> (sfi = 0x20f5c7aeee9)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x2bf336df6351 <JSFunction asString </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/lib/serializer.js> (sfi = 0x20f5c7af079)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[compiling method 0x2bf336df6239 <JSFunction asNumber </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/lib/serializer.js> (sfi = 0x20f5c7aee89)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[compiling method 0x2bf336df6271 <JSFunction asBoolean </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/lib/serializer.js> (sfi = 0x20f5c7aeee9)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[completed compiling 0x2bf336df6351 <JSFunction asString </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/lib/serializer.js> (sfi = 0x20f5c7af079)> (target MAGLEV) - took 0.000, 0.042, 0.000 ms]
+[completed compiling 0x2bf336df61c1 <JSFunction asString </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/lib/serializer.js> (sfi = 0x20f5c7aea19)> (target MAGLEV) - took 0.000, 0.250, 0.000 ms]
+[marking 0x3736fc0777d9 <JSFunction anonymous1 (sfi = 0x1dbc884d9e21)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x3736fc0777d9 <JSFunction anonymous1 (sfi = 0x1dbc884d9e21)> (target MAGLEV), mode: ConcurrencyMode::kConcurrent]
+[completed compiling 0x2bf336df6239 <JSFunction asNumber </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/lib/serializer.js> (sfi = 0x20f5c7aee89)> (target MAGLEV) - took 0.000, 0.042, 0.000 ms]
+[completed compiling 0x2bf336df6271 <JSFunction asBoolean </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/lib/serializer.js> (sfi = 0x20f5c7aeee9)> (target MAGLEV) - took 0.000, 0.041, 0.000 ms]
+[marking 0x3736fc077819 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)> for optimization to MAGLEV, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x3736fc077819 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)> (target MAGLEV) OSR, mode: ConcurrencyMode::kConcurrent]
+[completed compiling 0x3736fc0777d9 <JSFunction anonymous1 (sfi = 0x1dbc884d9e21)> (target MAGLEV) - took 0.000, 0.209, 0.000 ms]
+[completed compiling 0x14d3a5f00cb9 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)> (target MAGLEV) OSR - took 0.000, 1.958, 0.042 ms]
+[compiling method 0x14d3a5f00cb9 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)> (target TURBOFAN_JS) OSR, mode: ConcurrencyMode::kConcurrent]
+[marking 0x2bf336df61c1 <JSFunction asString </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/lib/serializer.js> (sfi = 0x20f5c7aea19)> for optimization to TURBOFAN_JS, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x2bf336df61c1 Considering 0x74948a638 {0x1dbc884d9e21 <SharedFunctionInfo anonymous1>} for inlining with 0x74948aa90 {0x1dbc884da6f1 <FeedbackVector[50]>}
+<JSFunction asString </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/lib/serializer.js> (sfi = 0x20f5c7aea19)> (target TURBOFAN_JS), mode: ConcurrencyMode::kConcurrent]
+1 candidate(s) for inlining:
+- candidate: JSCall node #91 with frequency 3488, 1 target(s):
+  - target: 0x74948a638 {0x1dbc884d9e21 <SharedFunctionInfo anonymous1>}, bytecode size: 309, existing opt code's inlined bytecode size: 72
+Inlining 0x74948a638 {0x1dbc884d9e21 <SharedFunctionInfo anonymous1>} into 0x74948a2c8 {0x1dbc884d9e69 <SharedFunctionInfo anonymous0>}
+Considering 0x74948b098 {0x020f5c7af079 <SharedFunctionInfo asString>} for inlining with 0x749894468 {0x1dbc884da5d1 <FeedbackVector[2]>}
+Inlining small function(s) at call site #264:JSCall
+[marking 0x14d3a5f00c59 Inlining 0x74948b098 {0x020f5c7af079 <SharedFunctionInfo asString>} into 0x74948a2c8 {0x1dbc884d9e69 <SharedFunctionInfo anonymous0>}
+Considering 0x749894540 {0x020f5c7aea19 <SharedFunctionInfo asString>} for inlining with 0x7498945d8 {0x1dbc884da409 <FeedbackVector[46]>}
+Considering 0x74948b2b8 {0x020f5c7aee89 <SharedFunctionInfo asNumber>} for inlining with 0x7498949c8 {0x1dbc884da611 <FeedbackVector[16]>}
+Considering 0x74948b420 {0x020f5c7aeee9 <SharedFunctionInfo asBoolean>} for inlining with 0x749894ed0 {0x1dbc884da6c1 <FeedbackVector[0]>}
+Inlining small function(s) at call site #360:JSCall
+Inlining 0x74948b420 {0x020f5c7aeee9 <SharedFunctionInfo asBoolean>} into 0x74948a2c8 {0x1dbc884d9e69 <SharedFunctionInfo anonymous0>}
+2 candidate(s) for inlining:
+- candidate: JSCall node #311 with frequency 3485.53, 1 target(s):
+  - target: 0x74948b2b8 {0x020f5c7aee89 <SharedFunctionInfo asNumber>}, bytecode size: 72
+- candidate: JSCall node #411 with frequency 3477.84, 1 target(s):
+  - target: 0x749894540 {0x020f5c7aea19 <SharedFunctionInfo asString>}, bytecode size: 271
+Inlining 0x74948b2b8 {0x020f5c7aee89 <SharedFunctionInfo asNumber>} into 0x74948a2c8 {0x1dbc884d9e69 <SharedFunctionInfo anonymous0>}
+1 candidate(s) for inlining:
+- candidate: JSCall node #411 with frequency 3477.84, 1 target(s):
+  - target: 0x749894540 {0x020f5c7aea19 <SharedFunctionInfo asString>}, bytecode size: 271
+Inlining <JSFunction anonymous1 (sfi = 0x1dbc884d9e21)> for optimization to TURBOFAN_JS, ConcurrencyMode::kConcurrent, reason: hot and stable]
+[compiling method 0x14d3a5f00c59 <JSFunction anonymous1 (sfi = 0x1dbc884d9e21)> (target TURBOFAN_JS), mode: ConcurrencyMode::kConcurrent]
+0x749894540 {0x020f5c7aea19 <SharedFunctionInfo asString>} into 0x74948a2c8 {0x1dbc884d9e69 <SharedFunctionInfo anonymous0>}
+[completed compiling 0x2bf336df61c1 <JSFunction asString </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/lib/serializer.js> (sfi = 0x20f5c7aea19)> (target TURBOFAN_JS) - took 0.000, 1.042, 0.000 ms]
+Considering 0x7498b2768 {0x020f5c7af079 <SharedFunctionInfo asString>} for inlining with 0x7498b3828 {0x1dbc884da5d1 <FeedbackVector[2]>}
+Inlining small function(s) at call site #139:JSCall
+Inlining 0x7498b2768 {0x020f5c7af079 <SharedFunctionInfo asString>} into 0x7498b22c8 {0x1dbc884d9e21 <SharedFunctionInfo anonymous1>}
+Considering 0x7498a44c0 {0x020f5c7aea19 <SharedFunctionInfo asString>} for inlining with 0x7498a4558 {0x1dbc884da409 <FeedbackVector[46]>}
+Considering 0x7498b2d28 {0x020f5c7aee89 <SharedFunctionInfo asNumber>} for inlining with 0x7498a4890 {0x1dbc884da611 <FeedbackVector[16]>}
+Considering 0x7498b2e90 {0x020f5c7aeee9 <SharedFunctionInfo asBoolean>} for inlining with 0x7498a4cd8 {0x1dbc884da6c1 <FeedbackVector[0]>}
+Inlining small function(s) at call site #235:JSCall
+Inlining 0x7498b2e90 {0x020f5c7aeee9 <SharedFunctionInfo asBoolean>} into 0x7498b22c8 {0x1dbc884d9e21 <SharedFunctionInfo anonymous1>}
+2 candidate(s) for inlining:
+- candidate: JSCall node #186 with frequency 0.999292, 1 target(s):
+  - target: 0x7498b2d28 {0x020f5c7aee89 <SharedFunctionInfo asNumber>}, bytecode size: 72
+- candidate: JSCall node #284 with frequency 0.997086, 1 target(s):
+  - target: 0x7498a44c0 {0x020f5c7aea19 <SharedFunctionInfo asString>}, bytecode size: 271
+Inlining 0x7498b2d28 {0x020f5c7aee89 <SharedFunctionInfo asNumber>} into 0x7498b22c8 {0x1dbc884d9e21 <SharedFunctionInfo anonymous1>}
+1 candidate(s) for inlining:
+- candidate: JSCall node #284 with frequency 0.997086, 1 target(s):
+  - target: 0x7498a44c0 {0x020f5c7aea19 <SharedFunctionInfo asString>}, bytecode size: 271
+Inlining 0x7498a44c0 {0x020f5c7aea19 <SharedFunctionInfo asString>} into 0x7498b22c8 {0x1dbc884d9e21 <SharedFunctionInfo anonymous1>}
+[completed optimizing 0x2bf336df61c1 <JSFunction asString </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/lib/serializer.js> (sfi = 0x20f5c7aea19)> (target TURBOFAN_JS)]
+[completed compiling 0x0b0c054523e9 <JSFunction anonymous1 (sfi = 0x1dbc884d9e21)> (target TURBOFAN_JS) - took 0.042, 4.625, 0.042 ms]
+[completed optimizing 0x0b0c054523e9 <JSFunction anonymous1 (sfi = 0x1dbc884d9e21)> (target TURBOFAN_JS)]
+[completed compiling 0x0b0c054524b1 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)> (target TURBOFAN_JS) OSR - took 0.042, 6.500, 0.000 ms]
+[completed optimizing 0x0b0c054524b1 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)> (target TURBOFAN_JS) OSR]
+[bailout (kind: deopt-eager, reason: prepare for on stack replacement (OSR)): begin. deoptimizing 0x0b0c054524b1 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)>, 0x28ba33bfb4a1 <Code MAGLEV>, opt id 24, bytecode offset 103, deopt exit 17, FP to SP delta 128, caller SP 0x00016f0c4770, pc 0x000124d17348]
+[marking dependent code 0x28ba33be5259 <Code TURBOFAN_JS> (0x020f5c7a3291 <SharedFunctionInfo>) (opt id 18) for deoptimization, reason: dependent allocation site tenuring changed]
+[marking dependent code 0x1ac01cb84f29 <Code MAGLEV> (0x020f5c7a3291 <SharedFunctionInfo>) (opt id 17) for deoptimization, reason: dependent allocation site tenuring changed]
+[bailout (kind: deopt-eager, reason: Insufficient type feedback for binary operation): begin. deoptimizing 0x0b0c054524b1 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)>, 0x28ba33bfd829 <Code TURBOFAN_JS>, opt id 25, bytecode offset 123, deopt exit 31, FP to SP delta 192, caller SP 0x00016f0c4770, pc 0x000124d19080]
+[compiling method 0x2bf336dceda9 <JSFunction </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/benchmark/trace-loop-v8.js> (sfi = 0x20f5c7a3291)> (target MAGLEV) OSR, mode: ConcurrencyMode::kConcurrent]
+[bailout (kind: deopt-eager, reason: Insufficient type feedback for binary operation): begin. deoptimizing 0x0b0c054524b1 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)>, 0x28ba33bfd829 <Code TURBOFAN_JS>, opt id 25, bytecode offset 123, deopt exit 31, FP to SP delta 192, caller SP 0x00016f0c4770, pc 0x000124d19080]
+[completed compiling 0x2bf336dceda9 <JSFunction </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/benchmark/trace-loop-v8.js> (sfi = 0x20f5c7a3291)> (target MAGLEV) OSR - took 0.000, 0.167, 0.000 ms]
+[bailout (kind: deopt-eager, reason: Insufficient type feedback for binary operation): begin. deoptimizing 0x0b0c054524b1 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)>, 0x28ba33bfd829 <Code TURBOFAN_JS>, opt id 25, bytecode offset 123, deopt exit 31, FP to SP delta 192, caller SP 0x00016f0c4770, pc 0x000124d19080]
+[bailout (kind: deopt-eager, reason: Insufficient type feedback for binary operation): begin. deoptimizing 0x0b0c054524b1 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)>, 0x28ba33bfd829 <Code TURBOFAN_JS>, opt id 25, bytecode offset 123, deopt exit 31, FP to SP delta 192, caller SP 0x00016f0c4770, pc 0x000124d19080]
+[bailout (kind: deopt-eager, reason: Insufficient type feedback for binary operation): begin. deoptimizing 0x0b0c054524b1 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)>, 0x28ba33bfd829 <Code TURBOFAN_JS>, opt id 25, bytecode offset 123, deopt exit 31, FP to SP delta 192, caller SP 0x00016f0c4770, pc 0x000124d19080]
+[bailout (kind: deopt-eager, reason: Insufficient type feedback for compare operation): begin. deoptimizing 0x2bf336dceda9 <JSFunction </Users/mcsheehy/orca/workspaces/fast-json-stringify/exp-loop-micro-opts/benchmark/trace-loop-v8.js> (sfi = 0x20f5c7a3291)>, 0x28ba33bc3179 <Code MAGLEV>, opt id 28, bytecode offset 143, deopt exit 8, FP to SP delta 144, caller SP 0x00016f0c4840, pc 0x000124d168e4]
+[bailout (kind: deopt-eager, reason: Insufficient type feedback for binary operation): begin. deoptimizing 0x0b0c054524b1 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)>, 0x28ba33bfd829 <Code TURBOFAN_JS>, opt id 25, bytecode offset 123, deopt exit 31, FP to SP delta 192, caller SP 0x00016f0c4770, pc 0x000124d19080]
+[bailout (kind: deopt-eager, reason: Insufficient type feedback for binary operation): begin. deoptimizing 0x0b0c054524b1 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)>, 0x28ba33bfd829 <Code TURBOFAN_JS>, opt id 25, bytecode offset 123, deopt exit 31, FP to SP delta 192, caller SP 0x00016f0c4770, pc 0x000124d19080]
+[bailout (kind: deopt-eager, reason: Insufficient type feedback for binary operation): begin. deoptimizing 0x0b0c054524b1 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)>, 0x28ba33bfd829 <Code TURBOFAN_JS>, opt id 25, bytecode offset 123, deopt exit 31, FP to SP delta 192, caller SP 0x00016f0c4770, pc 0x000124d19080]
+[bailout (kind: deopt-eager, reason: Insufficient type feedback for binary operation): begin. deoptimizing 0x0b0c054524b1 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)>, 0x28ba33bfd829 <Code TURBOFAN_JS>, opt id 25, bytecode offset 123, deopt exit 31, FP to SP delta 192, caller SP 0x00016f0c4770, pc 0x000124d19080]
+[bailout (kind: deopt-eager, reason: Insufficient type feedback for binary operation): begin. deoptimizing 0x0b0c054524b1 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)>, 0x28ba33bfd829 <Code TURBOFAN_JS>, opt id 25, bytecode offset 123, deopt exit 31, FP to SP delta 192, caller SP 0x00016f0c4770, pc 0x000124d19080]
+[bailout (kind: deopt-eager, reason: Insufficient type feedback for binary operation): begin. deoptimizing 0x0b0c054524b1 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)>, 0x28ba33bfd829 <Code TURBOFAN_JS>, opt id 25, bytecode offset 123, deopt exit 31, FP to SP delta 192, caller SP 0x00016f0c4770, pc 0x000124d19080]
+[bailout (kind: deopt-eager, reason: Insufficient type feedback for binary operation): begin. deoptimizing 0x0b0c054524b1 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)>, 0x28ba33bfd829 <Code TURBOFAN_JS>, opt id 25, bytecode offset 123, deopt exit 31, FP to SP delta 192, caller SP 0x00016f0c4770, pc 0x000124d19080]
+[bailout (kind: deopt-eager, reason: Insufficient type feedback for binary operation): begin. deoptimizing 0x0b0c054524b1 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)>, 0x28ba33bfd829 <Code TURBOFAN_JS>, opt id 25, bytecode offset 123, deopt exit 31, FP to SP delta 192, caller SP 0x00016f0c4770, pc 0x000124d19080]
+[bailout (kind: deopt-eager, reason: Insufficient type feedback for binary operation): begin. deoptimizing 0x0b0c054524b1 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)>, 0x28ba33bfd829 <Code TURBOFAN_JS>, opt id 25, bytecode offset 123, deopt exit 31, FP to SP delta 192, caller SP 0x00016f0c4770, pc 0x000124d19080]
+[bailout (kind: deopt-eager, reason: Insufficient type feedback for binary operation): begin. deoptimizing 0x0b0c054524b1 <JSFunction anonymous0 (sfi = 0x1dbc884d9e69)>, 0x28ba33bfd829 <Code TURBOFAN_JS>, opt id 25, bytecode offset 123, deopt exit 31, FP to SP delta 192, caller SP 0x00016f0c4770, pc 0x000124d19080]
+done variant=addComma N=100000

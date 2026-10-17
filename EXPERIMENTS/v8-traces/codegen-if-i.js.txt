@@ -1,0 +1,105 @@
+
+    
+const {
+  asString,
+  asNumber,
+  asBoolean,
+  asDateTime,
+  asDate,
+  asTime,
+  asUnsafeString
+} = serializer
+
+const asInteger = serializer.asInteger.bind(serializer)
+
+
+    const JSON_STR_BEGIN_OBJECT = '{'
+    const JSON_STR_END_OBJECT = '}'
+    const JSON_STR_BEGIN_ARRAY = '['
+    const JSON_STR_END_ARRAY = ']'
+    const JSON_STR_COMMA = ','
+    const JSON_STR_COLONS = ':'
+    const JSON_STR_QUOTE = '"'
+    const JSON_STR_EMPTY_OBJECT = JSON_STR_BEGIN_OBJECT + JSON_STR_END_OBJECT
+    const JSON_STR_EMPTY_ARRAY = JSON_STR_BEGIN_ARRAY + JSON_STR_END_ARRAY
+    const JSON_STR_EMPTY_STRING = JSON_STR_QUOTE + JSON_STR_QUOTE
+    const JSON_STR_NULL = 'null'
+  
+    
+      // "#/items"
+      function anonymous1 (input) {
+        const obj = (input && typeof input.toJSON === 'function')
+    ? input.toJSON()
+    : input
+  
+        if (obj === null) return JSON_STR_EMPTY_OBJECT
+        let json = ''
+
+        json += JSON_STR_BEGIN_OBJECT
+let addComma_0 = false
+
+          const value_s_1 = obj["s"]
+          if (value_s_1 !== undefined) {
+            json += addComma_0 ? ",\"s\":" : "\"s\":"
+           addComma_0 = true
+            
+        if (typeof value_s_1 !== 'string') {
+          if (value_s_1 === null) {
+            json += JSON_STR_EMPTY_STRING
+          } else if (value_s_1 instanceof Date) {
+            json += JSON_STR_QUOTE + value_s_1.toISOString() + JSON_STR_QUOTE
+          } else if (value_s_1 instanceof RegExp) {
+            json += asString(value_s_1.source)
+          } else {
+            json += asString(value_s_1.toString())
+          }
+        } else {
+          json += asString(value_s_1)
+        }
+        
+          }
+
+          const value_n_2 = obj["n"]
+          if (value_n_2 !== undefined) {
+            json += addComma_0 ? ",\"n\":" : "\"n\":"
+           addComma_0 = true
+            json += asNumber(value_n_2)
+          }
+
+          const value_b_3 = obj["b"]
+          if (value_b_3 !== undefined) {
+            json += addComma_0 ? ",\"b\":" : "\"b\":"
+           addComma_0 = true
+            json += asBoolean(value_b_3)
+          }
+
+    json += JSON_STR_END_OBJECT
+  
+        return json
+      }
+    
+
+    function anonymous0 (obj) {
+      // "#"
+      let json = ''
+  
+    if (obj === null) return JSON_STR_EMPTY_ARRAY
+    if (!Array.isArray(obj)) {
+      throw new TypeError("The value of '#' does not match schema definition.")
+    }
+    const arrayLength = obj.length
+  
+    json += JSON_STR_BEGIN_ARRAY
+  
+      for (let i = 0; i < arrayLength; i++) {
+        if (i !== 0) {
+          json += JSON_STR_COMMA
+        }
+        const value = obj[i]
+        json += anonymous1(value)
+      }
+      return json + JSON_STR_END_ARRAY
+    }
+    const main = anonymous0
+    return main
+    

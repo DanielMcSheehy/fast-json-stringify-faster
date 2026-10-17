@@ -1,0 +1,4 @@
+small x 9,992 ops/sec ±37.48% (2122 runs sampled)
+wide x 4,673 ops/sec ±30.69% (943 runs sampled)
+deep x 4,725 ops/sec ±67.47% (634 runs sampled)
+ref-heavy x 7,332 ops/sec ±48.58% (954 runs sampled)
