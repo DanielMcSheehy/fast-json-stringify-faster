@@ -29,7 +29,10 @@ done
 for f in bench-large-array.js bench-compile.js experiment-fixtures.js experiment-utils.js; do
   cp "/work/head/benchmark/$f" "/work/base/benchmark/$f"
 done
-echo "base=$BASE_SHA head=$HEAD_SHA" | tee /results/refs.txt
+echo "base=$BASE_SHA head=$HEAD_SHA node=$(node -v)" | tee /results/refs.txt
+if [ "${RUN_TESTS:-0}" = 1 ]; then
+  (cd /work/head && npm test 2>&1 | grep -E "^(ℹ|#) (tests|pass|fail) |Assertions|Statements" | tee /results/npm-test-head.txt)
+fi
 
 run_suite () { # suite side round
   local suite=$1 side=$2 round=$3 out="/results/$suite-$side-$round"

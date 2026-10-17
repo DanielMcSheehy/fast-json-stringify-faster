@@ -13,6 +13,19 @@ const mergeSchemas = require('./lib/merge-schemas')
 const DEFAULT_MAX_DEPTH = 100
 const NAMED_FRAGMENT_REF = /^#[a-z_][-\w._]*$/i
 
+// Minimum array lengths at which copying into a null-prototype array and
+// calling native JSON.stringify beats the generated per-item loop, measured
+// with the output consumed (flattened) as a socket write would
+// (EXPERIMENTS/runtime-matrix.md). Numbers win from ~100 elements on every
+// runtime because native float formatting beats per-item ToString. Integers
+// render through V8's small-int string cache, so the copy only pays off from
+// ~512 elements on V8 >= 12.4 (Node 22) and ~4096 on Node 20. Booleans never
+// win and keep the loop. Array lookup instead of a ternary keeps this fully
+// covered on every Node.
+const nodeMajor = Number.parseInt(process.versions.node, 10)
+const INTEGER_ARRAY_FAST_PATH = { condition: 'Number.isInteger(v)', minLength: [4096, 512][+(nodeMajor >= 22)] }
+const NUMBER_ARRAY_FAST_PATH = { condition: 'typeof v === \'number\' && v === v', minLength: 32 }
+
 const singleSchemaKeywords = [
   'additionalItems',
   'additionalProperties',
@@ -896,8 +909,12 @@ function buildObject (context, location, input) {
 
 // Per-element condition under which a native JSON.stringify(array) is
 // byte-identical to the generated per-item serializer for primitive item
-// schemas (see EXPERIMENTS/primitive-array-fastpath.md). Returns null when
-// the item schema uses any keyword that changes serialization dispatch.
+// schemas (see EXPERIMENTS/primitive-array-fastpath.md), plus the minimum
+// array length at which copying beats the existing loop. Returns null when
+// the item schema uses any keyword that changes serialization dispatch, or
+// when the kind never wins (boolean: 'true'/'false' concat is already cheap;
+// the copy loses 25-44% at every size on Node 24, see
+// EXPERIMENTS/runtime-matrix.md).
 function getPrimitiveArrayFastPathCondition (itemsSchema) {
   if (
     Array.isArray(itemsSchema) ||
@@ -915,14 +932,15 @@ function getPrimitiveArrayFastPathCondition (itemsSchema) {
   switch (itemsSchema.type) {
     case 'number':
       // asNumber(): NaN throws, Infinity serializes as null, every other
-      // number renders via ToString, exactly like JSON.stringify.
-      return 'typeof v === \'number\' && v === v'
+      // number renders via ToString, exactly like JSON.stringify. Native
+      // float formatting wins from ~100 elements on Node 20/22/24.
+      return NUMBER_ARRAY_FAST_PATH
     case 'integer':
       // asInteger(): only integer numbers skip the (rounding-dependent)
       // parseInteger path; those render via ToString like JSON.stringify.
-      return 'Number.isInteger(v)'
-    case 'boolean':
-      return 'typeof v === \'boolean\''
+      // Small-int ToString is cached, so the copy only wins from ~500
+      // elements, and only on V8 >= 12.4 (see INTEGER_ARRAY_FAST_PATH).
+      return INTEGER_ARRAY_FAST_PATH
     default:
       return null
   }
@@ -1022,17 +1040,17 @@ function buildArray (context, location, input) {
       }
       `
     } else {
-      const fastPathCondition = getPrimitiveArrayFastPathCondition(itemsSchema)
-      if (fastPathCondition) {
+      const fastPath = getPrimitiveArrayFastPathCondition(itemsSchema)
+      if (fastPath) {
         const valueCode = buildValue(context, itemsLocation, 'v')
         functionCode += `
-        // Copying tiny arrays costs more than the existing loop.
-        if (typeof arrayLength === 'number' && arrayLength >= 32 && Number.isInteger(arrayLength) && arrayLength <= 0xffffffff) {
+        // Copying small arrays costs more than the existing loop.
+        if (typeof arrayLength === 'number' && arrayLength >= ${fastPath.minLength} && Number.isInteger(arrayLength) && arrayLength <= 0xffffffff) {
           const copy = new Array(arrayLength)
           Object.setPrototypeOf(copy, null)
           for (let i = 0; i < arrayLength; i++) {
             const v = obj[i]
-            if (!(${fastPathCondition})) {
+            if (!(${fastPath.condition})) {
               // Serialize the captured prefix, then resume at the first miss.
               // Never reread getters or read ahead of an item's coercion.
               copy.length = i

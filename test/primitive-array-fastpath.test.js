@@ -191,3 +191,36 @@ test('excluded item schemas keep the classic path', (t) => {
   const strings = build({ type: 'array', items: { type: 'string' } })
   t.assert.equal(strings(['a', 'b']), '["a","b"]')
 })
+
+// The copy-then-stringify path only engages above a per-kind length cutoff
+// (number >= 32, integer >= 512 on Node >= 22 / 4096 on Node 20; boolean
+// never). Exercise each kind on both sides of its cutoff with a miss in the
+// middle, so the prefix/resume code runs for every kind on every runtime.
+test('guard misses above and below each kind cutoff match the serializer', (t) => {
+  const cases = [
+    ['number', 32, 1.5, '2', 2],
+    ['number', 31, 1.5, '2', 2],
+    ['integer', 512, 7, 1.5, 1],
+    ['integer', 511, 7, 1.5, 1],
+    ['integer', 600, 7, 10n, 10],
+    ['integer', 4095, 7, 1.5, 1],
+    ['integer', 4096, 7, 10n, 10],
+    ['boolean', 1000, true, 0, false]
+  ]
+  t.plan(cases.length * 3)
+  for (const [type, length, fill, miss, missOut] of cases) {
+    const stringify = build({ type: 'array', items: { type } })
+    const clean = new Array(length).fill(fill)
+    t.assert.equal(stringify(clean), JSON.stringify(clean), `${type}/${length} clean`)
+    const mid = clean.slice()
+    mid[length >> 1] = miss
+    const expected = clean.slice()
+    expected[length >> 1] = missOut
+    t.assert.equal(stringify(mid), JSON.stringify(expected), `${type}/${length} mid miss`)
+    const last = clean.slice()
+    last[length - 1] = miss
+    const expectedLast = clean.slice()
+    expectedLast[length - 1] = missOut
+    t.assert.equal(stringify(last), JSON.stringify(expectedLast), `${type}/${length} last miss`)
+  }
+})
