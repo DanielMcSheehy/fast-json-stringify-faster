@@ -1,0 +1,36 @@
+BASE 1
+BASE1 integer n=20000	1998
+BASE1 short string n=20000	657
+BASE1 long string n=20000	84
+BASE1 long string n=1000	2713
+BASE1 short string n=1000	16140
+BASE 2
+BASE2 integer n=20000	1958
+BASE2 short string n=20000	597
+BASE2 long string n=20000	74
+BASE2 long string n=1000	2407
+BASE2 short string n=1000	15445
+BASE 3
+BASE3 integer n=20000	1532
+BASE3 short string n=20000	557
+BASE3 long string n=20000	83
+BASE3 long string n=1000	2446
+BASE3 short string n=1000	15250
+OPT 1
+OPT1 integer n=20000	1417
+OPT1 short string n=20000	496
+OPT1 long string n=20000	92
+OPT1 long string n=1000	2796
+OPT1 short string n=1000	18568
+OPT 2
+OPT2 integer n=20000	4557
+OPT2 short string n=20000	1413
+OPT2 long string n=20000	254
+OPT2 long string n=1000	5668
+OPT2 short string n=1000	31660
+OPT 3
+OPT3 integer n=20000	5082
+OPT3 short string n=20000	1371
+OPT3 long string n=20000	240
+OPT3 long string n=1000	5930
+OPT3 short string n=1000	33179

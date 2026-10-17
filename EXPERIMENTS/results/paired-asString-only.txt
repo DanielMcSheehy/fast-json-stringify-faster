@@ -1,0 +1,4 @@
+asString short 20,683,527 19,929,274 -3.6%
+asString longClean 3,532,038 4,392,867 24.4%
+asString longDirty 3,909,480 4,527,777 15.8%
+asInteger 42 17,332,446 17,650,888 1.8%

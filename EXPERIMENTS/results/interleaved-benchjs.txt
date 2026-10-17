@@ -1,0 +1,30 @@
+r1 BASE short string	23648588
+r1 BASE long string clean	52163
+r1 BASE long string quoted	39571
+r1 BASE object long string	36225
+r1 BASE array short strings	29148
+r1 OPT short string	14763210
+r1 OPT long string clean	50088
+r1 OPT long string quoted	40347
+r1 OPT object long string	37900
+r1 OPT array short strings	27366
+r2 BASE short string	15247031
+r2 BASE long string clean	53941
+r2 BASE long string quoted	43810
+r2 BASE object long string	42729
+r2 BASE array short strings	30295
+r2 OPT short string	14519173
+r2 OPT long string clean	52446
+r2 OPT long string quoted	41038
+r2 OPT object long string	36667
+r2 OPT array short strings	28668
+r3 BASE short string	14159675
+r3 BASE long string clean	51028
+r3 BASE long string quoted	40660
+r3 BASE object long string	38514
+r3 BASE array short strings	28960
+r3 OPT short string	14718717
+r3 OPT long string clean	49280
+r3 OPT long string quoted	39984
+r3 OPT object long string	38239
+r3 OPT array short strings	28399

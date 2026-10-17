@@ -1,0 +1,8 @@
+asString short: baseline=18,818,150 opt=19,925,590 delta=5.9%
+asString longClean: baseline=3,581,581 opt=4,714,560 delta=31.6%
+asString longDirty: baseline=4,265,329 opt=4,901,104 delta=14.9%
+asInteger 42: baseline=16,430,230 opt=19,197,419 delta=16.8%
+asNumber 3.14: baseline=20,042,487 opt=19,220,751 delta=-4.1%
+loop asInteger 20k: baseline=2,054 opt=1,235 delta=-39.8%
+loop asString short 20k: baseline=706 opt=725 delta=2.7%
+loop asString longDirty 20k: baseline=122 opt=118 delta=-3.4%
