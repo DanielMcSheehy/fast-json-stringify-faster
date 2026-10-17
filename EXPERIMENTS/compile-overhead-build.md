@@ -31,6 +31,8 @@ Mixed workload: tiny / wide-200 / deep-20 / ref-heavy-50 / oneOf.
 
 ### Micro-isolation (tiny schema, 500 iters)
 
+Harness: `node benchmark/profile-build-parts.js`.
+
 | Step | ms/op | Notes |
 |------|------:|-------|
 | `isValidSchema` (precompiled schema-validator) | 0.0009 | Already a module singleton; **not** a per-build Ajv |

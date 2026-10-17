@@ -889,7 +889,6 @@ function buildObject (context, location, input) {
   return code
 }
 
-
 // Per-element condition under which a native JSON.stringify(array) is
 // byte-identical to the generated per-item serializer for primitive item
 // schemas (see EXPERIMENTS/primitive-array-fastpath.md). Returns null when
@@ -924,7 +923,6 @@ function getPrimitiveArrayFastPathCondition (itemsSchema) {
   }
 }
 
-
 // Item schema { type: 'string' } with no format, nullable, const, or combinator.
 // Other keywords (enum, pattern, minLength) are not applied while serializing.
 function isPlainStringItemsSchema (schema) {
@@ -953,7 +951,6 @@ function isPlainStringItemsSchema (schema) {
     return false
   }
   return true
-
 }
 
 function buildArray (context, location, input) {
@@ -1012,36 +1009,44 @@ function buildArray (context, location, input) {
 
     if (context.largeArrayMechanism === 'json-stringify') {
       functionCode += `if (arrayLength >= ${context.largeArraySize}) return JSON.stringify(obj)\n`
-
     } else if (plainStringFastPath) {
-      // Copy-then-JSON.stringify. Equivalent to per-element asString when every
-      // element is a string; a miss falls through to the coercing loop.
+      // Copy strings once; the helper resumes ordered coercion on the first miss.
       functionCode += `
-      if (arrayLength >= ${context.largeArraySize}) {
-        const fjsPlain = asPlainStringArray(obj)
-        if (fjsPlain !== undefined) return fjsPlain
+      if (typeof arrayLength === 'number' && arrayLength >= ${context.largeArraySize} && Number.isInteger(arrayLength) && arrayLength <= 0xffffffff) {
+        return asPlainStringArray(obj, arrayLength)
       }
       `
-
     } else {
       const fastPathCondition = getPrimitiveArrayFastPathCondition(itemsSchema)
       if (fastPathCondition) {
-        const flagVar = `fastNative_${context.uid++}`
+        const valueCode = buildValue(context, itemsLocation, 'v')
         functionCode += `
-        let ${flagVar} = true
-        for (let i = 0; i < arrayLength; i++) {
-          const v = obj[i]
-          if (!(${fastPathCondition})) {
-            ${flagVar} = false
-            break
+        // Copying tiny arrays costs more than the existing loop.
+        if (typeof arrayLength === 'number' && arrayLength >= 32 && Number.isInteger(arrayLength) && arrayLength <= 0xffffffff) {
+          const copy = new Array(arrayLength)
+          Object.setPrototypeOf(copy, null)
+          for (let i = 0; i < arrayLength; i++) {
+            const v = obj[i]
+            if (!(${fastPathCondition})) {
+              // Serialize the captured prefix, then resume at the first miss.
+              // Never reread getters or read ahead of an item's coercion.
+              copy.length = i
+              json = JSON.stringify(copy).slice(0, -1)
+              if (i > 0) json += JSON_STR_COMMA
+              ${valueCode}
+              for (i++; i < arrayLength; i++) {
+                json += JSON_STR_COMMA
+                const v = obj[i]
+                ${valueCode}
+              }
+              return json + JSON_STR_END_ARRAY
+            }
+            copy[i] = v
           }
-        }
-        if (${flagVar}) {
-          return json + JSON.stringify(obj)
+          return JSON.stringify(copy)
         }
       `
       }
-
     }
 
     functionCode += `
@@ -1130,7 +1135,7 @@ function buildArray (context, location, input) {
   } else if (plainStringFastPath) {
     inlinedCode += `
       let fjsPlain_${objVar}
-      if (arrayLength_${objVar} >= ${context.largeArraySize}) fjsPlain_${objVar} = asPlainStringArray(${objVar})
+      if (typeof arrayLength_${objVar} === 'number' && arrayLength_${objVar} >= ${context.largeArraySize} && Number.isInteger(arrayLength_${objVar}) && arrayLength_${objVar} <= 0xffffffff) fjsPlain_${objVar} = asPlainStringArray(${objVar}, arrayLength_${objVar})
       if (fjsPlain_${objVar} !== undefined) json += fjsPlain_${objVar}
       else {
     `

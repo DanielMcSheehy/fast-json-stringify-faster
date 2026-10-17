@@ -48,7 +48,7 @@ function stringArray (options) {
   }, options)
 }
 
-test('asPlainStringArray matches JSON.stringify only for string primitives', (t) => {
+test('asPlainStringArray matches native strings and preserves coercion on misses', (t) => {
   const serializer = new Serializer()
   const samples = [
     [],
@@ -88,7 +88,19 @@ test('asPlainStringArray matches JSON.stringify only for string primitives', (t)
   ]
 
   for (const sample of misses) {
-    t.assert.equal(serializer.asPlainStringArray(sample), undefined)
+    const stringify = stringArray({ largeArraySize: 100 })
+    let expected
+    let failure
+    try {
+      expected = stringify(sample)
+    } catch (error) {
+      failure = error
+    }
+    if (failure) {
+      t.assert.throws(() => serializer.asPlainStringArray(sample), failure.constructor)
+    } else {
+      t.assert.equal(serializer.asPlainStringArray(sample), expected)
+    }
   }
 })
 
