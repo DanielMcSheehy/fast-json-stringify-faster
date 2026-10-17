@@ -5,8 +5,8 @@ const { parseArgs } = require('node:util')
 const { isMainThread, parentPort, workerData } = require('node:worker_threads')
 const { Bench } = require('tinybench')
 const build = require('..')
-const { compileFixtures } = require('./experiment-fixtures')
-const { positiveNumber, runWorker, saveResults } = require('./experiment-utils')
+const { compileFixtures } = require('./bench-fixtures')
+const { positiveNumber, runWorker, saveResults } = require('./bench-utils')
 
 async function measure ({ name, iterations }) {
   const { schema, options } = compileFixtures()[name]

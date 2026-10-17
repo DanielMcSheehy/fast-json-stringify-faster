@@ -15,8 +15,8 @@ const NAMED_FRAGMENT_REF = /^#[a-z_][-\w._]*$/i
 
 // Minimum array lengths at which copying into a null-prototype array and
 // calling native JSON.stringify beats the generated per-item loop, measured
-// with the output consumed (flattened) as a socket write would
-// (EXPERIMENTS/runtime-matrix.md). On V8 >= 12.4 (Node 22) numbers win from
+// with the output consumed (flattened) as a socket write would, in CPU-pinned
+// containers on Node 20/22/24. On V8 >= 12.4 (Node 22) numbers win from
 // ~100 elements because native float formatting beats per-item ToString,
 // and integers from ~512 because small-int ToString is cached. Node 20's
 // JSON.stringify lacks the fast integer-array path and loses 15-25% up to
@@ -911,12 +911,10 @@ function buildObject (context, location, input) {
 
 // Per-element condition under which a native JSON.stringify(array) is
 // byte-identical to the generated per-item serializer for primitive item
-// schemas (see EXPERIMENTS/primitive-array-fastpath.md), plus the minimum
-// array length at which copying beats the existing loop. Returns null when
-// the item schema uses any keyword that changes serialization dispatch, or
-// when the kind never wins (boolean: 'true'/'false' concat is already cheap;
-// the copy loses 25-44% at every size on Node 24, see
-// EXPERIMENTS/runtime-matrix.md).
+// schemas, plus the minimum array length at which copying beats the existing
+// loop. Returns null when the item schema uses any keyword that changes
+// serialization dispatch, or when the kind never wins (boolean: 'true'/'false'
+// concat is already cheap; the copy loses 25-44% at every size on Node 24).
 function getPrimitiveArrayFastPathCondition (itemsSchema) {
   if (
     Array.isArray(itemsSchema) ||
