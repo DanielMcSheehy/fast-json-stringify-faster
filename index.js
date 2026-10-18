@@ -14,17 +14,27 @@ const DEFAULT_MAX_DEPTH = 100
 const NAMED_FRAGMENT_REF = /^#[a-z_][-\w._]*$/i
 
 // Minimum array lengths at which copying into a null-prototype array and
-// calling native JSON.stringify beats the generated per-item loop, measured
-// with the output consumed (flattened) as a socket write would, in CPU-pinned
-// containers on Node 20/22/24. On V8 >= 12.4 (Node 22) numbers win from
-// ~100 elements because native float formatting beats per-item ToString,
-// and integers from ~512 because small-int ToString is cached. Node 20's
-// JSON.stringify lacks the fast integer-array path and loses 15-25% up to
-// ~1e5 elements for integers and integer-valued numbers, so both kinds wait
-// for 1e5 there. Booleans never win and keep the loop. Array lookup instead
-// of a ternary keeps this fully covered on every Node.
+// calling native JSON.stringify beats the generated per-item loop. Measured
+// against main with tinybench (alternating rounds, median ops/s, output
+// consumed with Buffer.byteLength) on Node 20, 22, 24 and 26.
+//
+// Node 24+: floats win from 32 elements (+60-170%) and integer-valued
+// numbers from ~48; 64 leaves a margin for machines where 32-40 is flat.
+// Integers win from 512 because small-int ToString is cached, so the loop
+// is already cheap below that.
+//
+// Node 20/22: JSON.stringify is slower than the loop for integer-valued
+// elements (both `integer` and `number` schemas) up to 1e5 (-15-27%) and
+// only wins from ~3e5 (+100-180%). Floats win from 32 on Node 22, but a
+// `number` schema cannot tell floats from integers at build time, so both
+// kinds wait for 3e5 rather than regress integer-valued number arrays.
+//
+// Booleans never win and keep the loop. The array lookup instead of a
+// ternary keeps both branches covered on every Node.
+// TODO: drop the Node 20/22 tier (and this version check) once the minimum
+// supported Node is 24.
 const nodeMajor = Number.parseInt(process.versions.node, 10)
-const PRIMITIVE_FAST_PATH_MIN_LENGTH = [{ integer: 1e5, number: 1e5 }, { integer: 512, number: 32 }][+(nodeMajor >= 22)]
+const PRIMITIVE_FAST_PATH_MIN_LENGTH = [{ integer: 3e5, number: 3e5 }, { integer: 512, number: 64 }][+(nodeMajor >= 24)]
 const INTEGER_ARRAY_FAST_PATH = { condition: 'Number.isInteger(v)', minLength: PRIMITIVE_FAST_PATH_MIN_LENGTH.integer }
 const NUMBER_ARRAY_FAST_PATH = { condition: 'typeof v === \'number\' && v === v', minLength: PRIMITIVE_FAST_PATH_MIN_LENGTH.number }
 
@@ -932,14 +942,14 @@ function getPrimitiveArrayFastPathCondition (itemsSchema) {
   switch (itemsSchema.type) {
     case 'number':
       // asNumber(): NaN throws, Infinity serializes as null, every other
-      // number renders via ToString, exactly like JSON.stringify. Native
-      // float formatting wins from ~100 elements on Node 20/22/24.
+      // number renders via ToString, exactly like JSON.stringify. The cutoff
+      // is in NUMBER_ARRAY_FAST_PATH.
       return NUMBER_ARRAY_FAST_PATH
     case 'integer':
       // asInteger(): only integer numbers skip the (rounding-dependent)
       // parseInteger path; those render via ToString like JSON.stringify.
-      // Small-int ToString is cached, so the copy only wins from ~500
-      // elements, and only on V8 >= 12.4 (see INTEGER_ARRAY_FAST_PATH).
+      // Small-int ToString is cached, so the loop stays cheap for longer;
+      // the cutoff is in INTEGER_ARRAY_FAST_PATH.
       return INTEGER_ARRAY_FAST_PATH
     default:
       return null
