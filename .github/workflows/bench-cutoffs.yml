@@ -1,12 +1,12 @@
 name: bench-cutoffs
 
 on:
-  workflow_dispatch:
-    inputs:
-      rounds:
-        default: '8'
-      sizes:
-        default: '32,48,64,100,256,512,1000,10000,100000,300000,1000000'
+  push:
+    branches: ['bench/**']
+
+env:
+  ROUNDS: '8'
+  SIZES: '32,48,64,100,256,512,1000,10000,100000,300000,1000000'
 
 jobs:
   ab:
@@ -42,8 +42,7 @@ jobs:
         env:
           MAIN_DIR: fjs-main
           CAND_DIR: fjs-cand
-        run: node benchmark/ci/ab.js ${{ inputs.rounds }} ${{ inputs.sizes }} | tee result.md
-      - run: cat result.md >> "$GITHUB_STEP_SUMMARY"
+        run: node benchmark/ci/ab.js "$ROUNDS" "$SIZES" | tee result.md
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.candidate.name }}-node${{ matrix.node }}
