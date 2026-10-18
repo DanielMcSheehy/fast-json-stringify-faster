@@ -757,10 +757,10 @@ test('string array coerces a non-string item', (t) => {
 
 // Large number/integer arrays are copied and handed to JSON.stringify. The
 // first element that is not already the right type switches to the per-item
-// loop from that index on. 3e5 elements is the largest fast-path cutoff on
+// loop from that index on. 1e5 elements is the largest fast-path cutoff on
 // any supported Node release (see PRIMITIVE_FAST_PATH_MIN_LENGTH in index.js),
 // so these always exercise the resume path.
-const FAST_PATH_LENGTH = 3e5
+const FAST_PATH_LENGTH = 1e5
 
 for (const [type, bad, expected] of [
   ['integer', 1.9, '1'],
