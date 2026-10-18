@@ -1,0 +1,50 @@
+name: bench-cutoffs
+
+on:
+  workflow_dispatch:
+    inputs:
+      rounds:
+        default: '8'
+      sizes:
+        default: '32,48,64,100,256,512,1000,10000,100000,300000,1000000'
+
+jobs:
+  ab:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 22, 24, 26]
+        candidate:
+          - { name: pr-as-reviewed, ref: 395a410 }
+          - { name: new-cutoffs, ref: 53576ac }
+    name: node ${{ matrix.node }} / ${{ matrix.candidate.name }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: fastify/fast-json-stringify
+          ref: main
+          path: fjs-main
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.candidate.ref }}
+          path: fjs-cand
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm i --no-package-lock --no-audit --no-fund
+      - run: npm i --no-package-lock --no-audit --no-fund --omit=dev
+        working-directory: fjs-main
+      - run: npm i --no-package-lock --no-audit --no-fund --omit=dev
+        working-directory: fjs-cand
+      - name: A/B
+        env:
+          MAIN_DIR: fjs-main
+          CAND_DIR: fjs-cand
+        run: node benchmark/ci/ab.js ${{ inputs.rounds }} ${{ inputs.sizes }} | tee result.md
+      - run: cat result.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.candidate.name }}-node${{ matrix.node }}
+          path: result.md
