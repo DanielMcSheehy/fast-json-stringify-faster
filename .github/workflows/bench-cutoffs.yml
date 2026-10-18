@@ -17,7 +17,7 @@ jobs:
         node: [20, 22, 24, 26]
         candidate:
           - { name: pr-as-reviewed, ref: 395a410598933595b46e7f3edaa9c7dbd7ab6c20 }
-          - { name: new-cutoffs, ref: 53576acf9200ad6ee1c28862131f84576f574433 }
+          - { name: new-cutoffs, ref: f25152967b01af0926606155bcfa7fa56b1ff643 }
     name: node ${{ matrix.node }} / ${{ matrix.candidate.name }}
     steps:
       - uses: actions/checkout@v4
